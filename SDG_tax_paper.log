@@ -1,0 +1,230 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.4.24)  5 JUN 2021 20:05
+entering extended mode
+**./SDG_tax_paper.tex
+(SDG_tax_paper.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18>
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/elsarticle\el
+sarticle.cls
+Document Class: elsarticle 2020/11/20, 3.3: Elsevier Ltd
+
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl
+3.sty
+Package: expl3 2021-02-18 L3 programming layer (loader) 
+
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3b
+ackend-pdftex.def
+File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count179
+\l__pdf_internal_box=\box47
+))
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xp
+arse\xparse.sty
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xp
+arse\xparse-2020-10-01.sty
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xp
+arse\xparse-generic.tex)))
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoo
+lbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count180
+)
+\@bls=\dimen138
+
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/base\article.
+cls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.c
+lo
+File: size12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+)
+\c@part=\count181
+\c@section=\count182
+\c@subsection=\count183
+\c@subsubsection=\count184
+\c@paragraph=\count185
+\c@subparagraph=\count186
+\c@figure=\count187
+\c@table=\count188
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen139
+)
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/graphics\grap
+hicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyv
+al.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/graphics\grap
+hics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig
+.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\
+graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\
+pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen140
+\Gin@req@width=\dimen141
+)
+\c@tnote=\count189
+\c@fnote=\count190
+\c@cnote=\count191
+\c@ead=\count192
+\c@author=\count193
+\@eadauthor=\toks16
+\c@affn=\count194
+\absbox=\box48
+\elsarticlehighlightsbox=\box49
+\elsarticlegrabsbox=\box50
+\keybox=\box51
+\Columnwidth=\dimen142
+\space@left=\dimen143
+\els@boxa=\box52
+\els@boxb=\box53
+\leftMargin=\dimen144
+\@enLab=\toks17
+\@sep=\skip49
+\@@sep=\skip50
+ (SDG_tax_paper.spl)
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib
+.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip51
+\bibsep=\skip52
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count195
+)
+\splwrite=\write3
+\openout3 = `SDG_tax_paper.spl'.
+
+\appnamewidth=\dimen145
+)
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amss
+ymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsf
+onts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks18
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (SDG_tax_paper.aux)
+\openout1 = `SDG_tax_paper.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\s
+upp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count196
+\scratchdimen=\dimen146
+\scratchbox=\box54
+\nofMPsegments=\count197
+\nofMParguments=\count198
+\everyMPshowfont=\toks19
+\MPscratchCnt=\count199
+\MPscratchDim=\dimen147
+\MPnumerator=\count266
+\makeMPintoPDFobject=\count267
+\everyMPtoPDFconversion=\toks20
+)
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\
+epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epst
+opdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+)) [1
+
+{C:/Users/HW van der Waal/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2
+
+]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 116
+.
+
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa
+.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 116
+.
+
+(C:\Users\HW van der Waal\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb
+.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (SDG_tax_paper.bbl
+Underfull \hbox (badness 1430) in paragraph at lines 24--33
+[]\OT1/cmr/m/n/12 Whait, R.B., Christ, K.L., Or-tas, E., Bur-ritt, R.L., 2018. 
+ What
+ []
+
+)
+Overfull \hbox (2.61108pt too wide) has occurred while \output is active
+[] 
+ []
+
+[1
+
+
+] (SDG_tax_paper.aux) ) 
+Here is how much of TeX's memory you used:
+ 2824 strings out of 479321
+ 40174 string characters out of 2851775
+ 326839 words of memory out of 3000000
+ 20272 multiletter control sequences out of 15000+600000
+ 411928 words of font info for 60 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 83i,5n,88p,538b,264s stack positions out of 5000i,500n,10000p,200000b,80000s
+ <C:\Users\HW van der Waal\AppData\Local\MiKTeX\fonts/pk
+/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/HW van der Waal/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/HW van der 
+Waal/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
+/Users/HW van der Waal/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmr17.pfb><C:/Users/HW van der Waal/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmr8.pfb><C:/Users/HW van der Waal/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/HW van der Waal/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users
+/HW van der Waal/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
+mti7.pfb><C:/Users/HW van der Waal/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmtt12.pfb>
+Output written on SDG_tax_paper.pdf (3 pages, 102122 bytes).
+PDF statistics:
+ 49 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

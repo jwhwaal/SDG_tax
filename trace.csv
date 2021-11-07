@@ -1,0 +1,576 @@
+"","ans_id","V000","V001","V002_1","V002_2","V002_3","V002_4","V002_o","V002_o1","V003_1","V004_1","V006_1","V006_2","V006_3","V006_4","V006_5","V006_o","V006_o1","V007","V008","V009","V010","V010_o","V011_1","V012_1","V013_1","V015","Leeftijd","Leeftijd_cat","Geslacht","Postcode"
+"1",2525,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"geen",33,1,1,3438
+"2",5076,1,2,0,0,0,1,0,"",2,2,1,1,0,0,1,0,"",2,4,2,1,"",NA,NA,NA,"Waar ze vandaag komen en of er een eerlijke prijs voor wordt betaald aan de boeren",33,1,2,5146
+"3",3322,1,2,1,1,0,1,0,"",2,2,1,1,1,1,0,0,"",1,1,2,1,"",NA,NA,NA,"Of ze duurzaam geproduceerd zijn",30,1,2,7521
+"4",2677,1,3,1,0,0,1,0,"",1,2,1,1,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Ik zou niet snel info over de bananen opzoeken.",30,1,1,3708
+"5",2102,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,1,4,1,"",NA,NA,NA,"waar ze vandaan komen, hoe ze gegroeid zijn",21,1,2,6512
+"6",4434,1,3,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen idee, keertje gewoon voor de leuk kijken welke info je kan vinden",31,1,2,6846
+"7",4030,1,10,0,1,0,0,0,"",3,2,1,1,0,0,0,0,"",1,4,4,1,"",NA,NA,NA,"Niets",29,1,2,5481
+"8",5014,1,2,1,0,0,0,0,"",2,1,1,1,0,0,0,0,"",2,1,4,1,"",NA,NA,NA,"Geen idee maar het lijkt me wel leuk om er meer info over te lezen.",33,1,2,4335
+"9",2075,1,4,0,0,0,1,0,"",1,2,1,0,0,0,0,0,"",1,1,2,1,"",NA,NA,NA,"Niets",27,1,2,3328
+"10",749,1,4,0,0,0,1,0,"",2,2,1,0,0,0,1,0,"",2,3,4,1,"",NA,NA,NA,"Waar ze vandaan komen",25,1,2,4416
+"11",4035,1,4,0,0,0,1,0,"",1,2,1,1,0,0,0,0,"",1,1,3,1,"",NA,NA,NA,"Niets",24,1,2,5408
+"12",5515,1,8,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,1,2,1,"",NA,NA,NA,"Niets",28,1,2,5237
+"13",7426,1,2,0,0,0,1,0,"",2,2,0,1,1,1,0,0,"",2,1,3,1,"",NA,NA,NA,"waar de bananen vandaan komen",24,1,2,8103
+"14",7248,1,2,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"of de arbeiders goed behandeld worden",30,1,1,9746
+"15",113,1,4,0,0,0,1,0,"",2,2,1,1,0,1,0,0,"",2,1,3,1,"",NA,NA,NA,"Niets",26,1,2,5653
+"16",4586,1,1,0,0,0,1,0,"",2,1,1,1,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"als ik ze al heb gekocht geen",20,1,2,5045
+"17",8405,1,4,0,0,0,1,0,"",1,2,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Neutraal",32,1,1,5482
+"18",757,1,4,1,0,0,1,0,"",1,1,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen",32,1,1,7913
+"19",7897,1,4,0,0,1,0,0,"",NA,NA,1,1,0,0,0,0,"",1,1,2,1,"",NA,NA,NA,"Geen opmerkingen",30,1,1,3241
+"20",1376,1,2,0,0,0,1,0,"",2,3,1,1,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"Wat de impact is op de boeren en op het milieu (het liefst ook van de reis van plantage naar supermarkt)",24,1,2,9727
+"21",8643,1,3,0,0,0,1,0,"",3,3,1,0,0,0,0,0,"",1,3,5,1,"",NA,NA,NA,"Geen. Daarnaast koop ik mijn bananen niet bij de plus, maar deze optie werd niet gegeven.",25,1,2,6836
+"22",8293,1,3,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"Eerlijke prijs
+Duurzaam verbouwt 
+Klimaatneutraal",25,1,2,3572
+"23",7727,1,1,0,1,0,0,0,"",1,2,1,0,0,1,0,0,"",1,2,1,2,"2",1,1,2,"de hoeveelheid bananen en de fairtrade logo",29,1,1,2034
+"24",9664,1,4,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"waar het vandaan komt, hoe geproduceerd en welke bestrijdingsmiddelen gebruikt zijn die evt. schadelijk zouden kunnen zijn",23,1,2,4586
+"25",6518,1,5,0,0,0,1,0,"",3,3,1,0,0,0,0,0,"",2,4,4,1,"",NA,NA,NA,"geen, eet ze gewoon op",32,1,2,1336
+"26",2563,1,1,0,0,0,1,0,"",2,1,1,1,0,0,0,0,"",1,1,3,1,"",NA,NA,NA,"hoe de mensen behandeld worden die ze plukken
+",18,1,2,7255
+"27",4192,1,4,1,0,0,1,0,"",3,2,1,0,0,0,0,0,"",2,4,4,1,"",NA,NA,NA,"Waarom zijn bananen krom",33,1,1,2821
+"28",8308,1,1,0,0,0,1,0,"",2,2,1,0,0,0,1,0,"",2,4,3,1,"",NA,NA,NA,"ik wist niet eens dat dit kon",29,1,1,3181
+"29",260,1,2,0,1,0,1,0,"",3,1,1,1,1,1,1,0,"",1,4,2,1,"",NA,NA,NA,"Waar ze precies vandaan zouden komen en Hoelang het duurt totdat het vers in de schappen ligt",22,1,1,2162
+"30",667,1,4,0,0,0,1,0,"",1,1,1,1,0,0,0,0,"",1,4,2,2,"2",2,1,1,"Uit welk land ze komen en kijken welke keurmerken de bananen hebben. Ook is het interessant om te weten hoe duurzaam de bananen zijn voor het klimaat.",20,1,1,6581
+"31",5932,1,2,0,0,0,1,0,"",2,2,1,0,0,1,0,0,"",2,2,3,1,"",NA,NA,NA,"welk land",34,1,2,3832
+"32",1345,1,4,1,1,0,0,0,"",1,1,1,0,1,0,0,0,"",1,1,2,1,"",NA,NA,NA,"Over hoe oud ze zijn",31,1,1,6031
+"33",603,1,1,0,0,0,1,0,"",2,2,1,1,0,0,1,0,"",2,3,3,1,"",NA,NA,NA,"Van welke boerderij ze komen en wie daar werken.",25,1,2,5014
+"34",2616,1,4,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Niks",21,1,2,1689
+"35",7259,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,1,3,1,"",NA,NA,NA,"Geen",30,1,2,3319
+"36",7607,1,4,0,0,0,1,0,"",2,1,1,0,0,0,0,0,"",1,4,4,1,"",NA,NA,NA,"Locatie, manier van uitoefenen landbouw icm natuurbescherming",29,1,2,3437
+"37",4790,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,1,3,1,"",NA,NA,NA,"Waar vandaan",27,1,1,3262
+"38",5274,1,4,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,1,4,1,"",NA,NA,NA,"Hoe ze geteeld zijn",28,1,2,5725
+"39",12581,1,3,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,1,2,1,"",NA,NA,NA,"geen ik ga ervan uit dat ZE FAIRTRADE ZIJN",46,2,1,5665
+"40",13114,1,7,1,1,0,1,0,"",2,2,1,1,0,1,1,0,"",1,4,2,1,"",NA,NA,NA,"Herkomst, vervoer, telers van het product",46,2,1,3312
+"41",13561,1,4,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Geen, als het Fairtrade label er op zit kan en mag ik er van uit gaan dat het goed zit. En als ik van ieder product informatie  moet gaan uitzoeken waar een Fairtrade label op zit of geen label op zit dan zou ik een dagtaak hebben.",43,2,1,1335
+"42",12371,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,1,3,1,"",NA,NA,NA,"Leefomstandigheden",49,2,2,6228
+"43",12793,1,1,0,1,0,0,0,"",2,2,1,0,0,0,0,0,"",1,2,2,2,"",2,1,1,"Waar ze vandaan komen",47,2,2,2951
+"44",15534,1,2,0,1,0,0,0,"",2,2,1,0,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"Niets",37,2,1,9207
+"45",15992,1,3,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,1,2,1,"",NA,NA,NA,"WAAR ZE verdaan komen .",44,2,1,3564
+"46",19233,1,3,0,0,0,1,0,"",1,1,0,1,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Waar het vandaan komt en hoe het naar Nederland gaat",47,2,2,8302
+"47",18577,1,4,0,0,0,1,0,"",1,2,1,0,0,0,0,0,"",1,1,1,1,"",NA,NA,NA,"Niets",37,2,2,5685
+"48",14277,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,1,1,"",NA,NA,NA,"Waar ze vandaan komen en of het fair-trade is.",44,2,2,7606
+"49",19075,1,2,0,0,0,1,0,"",3,2,0,1,0,0,0,0,"",2,4,4,1,"",NA,NA,NA,"Klimaat en natuur",41,2,1,3079
+"50",19435,1,5,0,0,0,1,0,"",1,1,1,0,0,1,1,0,"",1,1,1,1,"",NA,NA,NA,"Over klimaat",38,2,1,1441
+"51",15849,1,4,1,0,0,1,0,"",1,1,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Ik zoek geen informatie over bananen",45,2,2,3034
+"52",10794,1,3,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"op welke manier de boeren hier profijt van hebben",46,2,1,2951
+"53",17777,1,8,0,0,0,1,0,"",2,2,0,0,0,1,0,0,"",2,2,3,1,"",NA,NA,NA,"Niet",42,2,2,5046
+"54",16283,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,1,2,1,"",NA,NA,NA,"waar ze verdaan komen en hoe ze geteeld worden en hoe ze hierheen komen",45,2,2,5684
+"55",17485,1,4,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Hoe ze geoogst worden",39,2,1,5764
+"56",11602,1,1,0,1,0,0,0,"",2,2,1,0,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"Geen",48,2,1,3533
+"57",11783,1,6,0,0,0,1,0,"",1,2,1,1,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"Geen tijd voor om daar naar te kijken",35,2,1,7606
+"58",15910,1,5,0,1,0,1,0,"",2,2,1,1,0,0,0,0,"",1,3,2,1,"",NA,NA,NA,"gebruikte bestrijdingsmiddelen",43,2,1,5991
+"59",16790,1,3,0,1,0,0,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen",42,2,1,3208
+"60",14587,1,1,0,0,0,1,0,"",2,1,1,0,0,0,1,0,"",1,3,4,1,"",NA,NA,NA,"geen",49,2,2,7622
+"61",14465,1,7,0,0,0,1,0,"",2,1,0,0,0,0,1,0,"",2,4,3,1,"",NA,NA,NA,"Hoe gezond is bananen 
+Meer informatie",45,2,1,3564
+"62",16166,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"Wat er voor de boer overblijft in vergelijking met <U+0091>gewone<U+0092> bananen.",47,2,1,1335
+"63",19735,1,4,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen",37,2,1,5804
+"64",11232,1,4,1,0,0,0,0,"",2,2,1,1,0,0,0,0,"",1,2,3,1,"",NA,NA,NA,"geen",36,2,1,3471
+"65",15554,1,1,1,1,0,1,0,"",2,2,1,0,0,1,0,0,"",1,1,3,1,"",NA,NA,NA,"Geen. Ik vind het vooral lekker",40,2,1,5953
+"66",13237,1,4,0,0,0,1,0,"",2,2,0,1,0,0,0,0,"",1,1,1,1,"",NA,NA,NA,"oorsprong",45,2,1,5623
+"67",15650,1,3,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,1,3,1,"",NA,NA,NA,"Geen",41,2,2,3453
+"68",14878,1,3,0,0,0,1,0,"",1,2,1,1,0,0,0,0,"",1,3,3,1,"",NA,NA,NA,"eigenlijk geen. Ik kijk naar de kleur en stevigheid. Niet naar de prijs. Bij de PLUS stomen ze het fruit. Erg goed.",40,2,2,4726
+"69",17867,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Daar heb ik nooit over nagedacht dus daar heb ik geen antwoord op",48,2,1,2287
+"70",12737,1,1,0,0,0,1,0,"",2,1,1,1,0,0,0,0,"",1,3,3,1,"",NA,NA,NA,"Afkomst, welke routing van bron naar winkel, welke tussenpartijen (goed en slecht) zijn hierbij betrokken. Immers zelfs bij goede doelen zitten er rotte appels tussen die een graantje willen meepikken van de goodwill van mensen",44,2,1,3317
+"71",17785,1,2,0,0,1,0,0,"",NA,NA,1,1,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Geen",47,2,2,1392
+"72",19820,1,3,0,0,0,1,0,"",2,1,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"merk, afkomst, en eerlijke handel",42,2,1,4033
+"73",16126,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"geen",37,2,1,7325
+"74",18678,1,1,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,1,3,1,"",NA,NA,NA,"Geen informatie",49,2,1,5036
+"75",12579,1,4,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"Waar ze vandaan komen",49,2,1,5512
+"76",19786,1,3,0,0,0,1,0,"",2,1,1,0,1,1,0,0,"",1,4,3,1,"",NA,NA,NA,"geeen",46,2,2,1335
+"77",12612,1,2,0,0,0,1,0,"",2,2,1,1,0,0,1,0,"",2,4,2,1,"",NA,NA,NA,"waar ze vandaan komen, of er kritiek is op wat ze beweren. dus of ze echt doen wat ze zeggen",42,2,2,1335
+"78",13402,1,1,0,0,0,1,0,"",2,2,0,0,0,0,0,1,"Marketingtechniek om meer te verkopen",2,3,3,1,"",NA,NA,NA,"Chiqueta bananen ook fair zijn ?",49,2,1,1433
+"79",11330,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,2,"1",2,1,1,"Waar ze vandaan komen",41,2,2,6546
+"80",14327,1,1,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,1,1,1,"",NA,NA,NA,"Land van herkomst",47,2,2,1185
+"81",10746,1,1,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,4,4,1,"",NA,NA,NA,"De prijs",49,2,2,9219
+"82",13797,1,4,1,1,0,1,0,"",3,3,1,0,0,0,0,0,"",2,2,3,1,"",NA,NA,NA,"Nog nooit zo over bananen nagedacht. Wellicht dat ik er me er naar aanleiding hiervan wat meer in ga verdiepen.",37,2,1,9721
+"83",13264,1,1,0,0,0,1,0,"",2,2,1,1,0,1,0,0,"",2,4,3,1,"",NA,NA,NA,"hoe ze geteeld worden, hoe de boeren beloond worden en of en hoe de boeren ondersteund worden door de (westerse) samenleving om milieubewust te telen, zonder dat er bebossing gekapt wordt om nog grotere en effici<eb>ntere bananenplantages op te zetten.",43,2,1,8043
+"84",18967,1,5,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"ik zou geen informatie opzoeken",46,2,2,5041
+"85",19472,1,4,0,1,0,0,0,"",2,2,1,1,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"Ik denk niet dat ik dit zo snel zou opzoeken.",46,2,1,2993
+"86",18228,1,3,0,0,0,1,0,"",2,1,1,1,0,1,0,0,"",2,1,1,1,"",NA,NA,NA,"Land, boer en plantage",49,2,2,4661
+"87",11952,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Niks",38,2,2,7551
+"88",17714,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Geen",44,2,1,2371
+"89",16396,1,2,1,0,0,0,0,"",2,2,1,1,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Herkomst en wel of geen bestrijdingsmiddelen",42,2,2,3404
+"90",16480,1,3,0,0,0,1,0,"",2,2,1,0,0,1,0,0,"",1,1,3,1,"",NA,NA,NA,"geen",48,2,1,3811
+"91",15185,1,4,1,0,0,0,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen",35,2,1,7482
+"92",17222,1,8,0,0,0,1,0,"",2,2,0,1,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"niks",35,2,1,5646
+"93",12294,1,1,1,0,0,0,0,"",1,1,1,0,0,0,0,0,"",2,3,1,1,"",NA,NA,NA,"Niks",47,2,1,1069
+"94",18634,1,3,0,0,0,1,0,"",2,2,1,0,0,1,0,0,"",2,4,3,1,"",NA,NA,NA,"Hoe de banaan gekweekt is en waar hij vandaan komt",48,2,2,3251
+"95",17975,1,1,0,0,0,1,0,"",1,1,1,1,0,0,1,0,"",2,3,2,1,"",NA,NA,NA,"Geen, ik verwacht dat Plus (of leveranciers) op deze informatie wordt gecontroleerd.",43,2,1,5706
+"96",18599,1,6,1,0,0,1,0,"",2,2,1,1,0,0,0,1,"Betere omstandigheden waarin de produkten worden gemaakt; doorgaan voor betere kwaliteit prodkten",2,1,2,1,"",NA,NA,NA,"Wat voor soort het is, waarvandaan ze komen. Hoe ze hier komen. Hoe ze verbouwd worden. Welke behandeling ze eventueel ondergaan. Kosten.",46,2,1,7443
+"97",14133,1,4,1,1,0,1,0,"",2,1,0,0,0,1,0,0,"",1,2,2,1,"",NA,NA,NA,"Herkomst",46,2,2,9712
+"98",13995,1,8,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,2,1,1,"",NA,NA,NA,"Geen",35,2,2,7552
+"99",20351,1,2,0,0,0,1,0,"",2,1,1,0,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"Arbeisdomstandigheden,milieubewust",67,3,2,1441
+"100",19266,1,4,1,0,0,0,0,"",2,2,1,1,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"Geen, daar heb ik geen tijd voor",48,2,2,5685
+"101",21206,1,2,0,0,0,1,0,"",1,2,1,0,0,0,0,0,"",2,3,4,1,"",NA,NA,NA,"nu dat ik dit weet zal ik de info opzoeken hoe de bananen terecht komen bij plus",68,3,1,6367
+"102",21169,1,3,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"Herkomst",76,3,1,7641
+"103",21664,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,3,2,1,"",NA,NA,NA,"of er geen bestrijdingsmiddelen zijn gebruikt",58,3,2,1338
+"104",20288,1,1,0,0,0,0,1,"Smeding",2,2,1,0,0,0,0,0,"",2,1,4,1,"",NA,NA,NA,"Waar ze vandaan komen",55,3,2,5038
+"105",22347,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Niet
+Of ze lekker zijn",53,3,1,2613
+"106",24490,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"ik zou helemaal geen informatie opzoeken. Stel je voor dat ik voor mijn hele boodschappenlijst info moet opzoeken ....",50,3,2,3065
+"107",24355,1,2,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,3,2,1,"",NA,NA,NA,"Geen enkele",67,3,1,5433
+"108",24617,1,6,0,0,0,1,0,"",1,2,1,0,0,0,1,0,"",1,2,2,1,"",NA,NA,NA,"Land van herkomst.",68,3,1,5043
+"109",22223,1,4,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Niets, ik geloof de plus als er fairtrade opstaat",66,3,1,7542
+"110",24909,1,1,1,0,0,0,0,"",2,2,1,1,0,0,0,0,"",2,2,3,1,"",NA,NA,NA,"Zou ik niet doen",79,3,1,7603
+"111",23034,1,1,0,0,0,1,0,"",2,2,0,1,0,0,0,0,"",1,3,3,1,"",NA,NA,NA,"Geen",66,3,2,2182
+"112",25065,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"hoe worden ze verwerkt en door welke boeren grote bedrijven of kleine boeren",75,3,1,6351
+"113",22571,1,4,0,0,0,1,0,"",2,3,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Waar ze vandaan komen",73,3,2,2871
+"114",24888,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,5,1,"",NA,NA,NA,"Niks",56,3,2,2652
+"115",22802,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"geen",54,3,1,2612
+"116",24876,1,3,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"ik zal nooit iets opzoeken",65,3,1,9626
+"117",17041,1,4,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen",45,2,2,1339
+"118",24106,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,4,1,"",NA,NA,NA,"het land van oorsprong",72,3,1,3355
+"119",20459,1,4,1,1,0,1,0,"",2,3,1,0,0,0,0,0,"",1,4,3,2,"3",2,1,1,"Oorsprong en oogst periode .",58,3,1,2571
+"120",20077,1,6,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"Geen",69,3,2,7151
+"121",22211,1,1,0,1,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Niet",59,3,1,3453
+"122",20722,1,2,1,1,0,1,0,"",2,2,1,1,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"geen",84,3,1,6955
+"123",25995,1,8,1,0,0,0,0,"",2,1,1,1,1,1,0,0,"",1,4,1,1,"",NA,NA,NA,"Waar komen ze vandaan.",73,3,1,7242
+"124",7252,1,3,1,0,0,0,0,"",2,2,0,0,0,1,0,0,"",1,1,5,1,"",NA,NA,NA,"Geen",34,1,2,5731
+"125",26937,1,6,0,1,0,0,0,"",3,3,1,0,0,0,0,0,"",1,1,3,1,"",NA,NA,NA,"Waar ze vandaan komen",71,3,2,5521
+"126",22411,1,2,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"geen",65,3,1,5643
+"127",26838,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,5,1,"",NA,NA,NA,"Geen",61,3,1,2313
+"128",25919,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,4,1,"",NA,NA,NA,"Geen",66,3,1,3316
+"129",25042,1,2,1,0,0,0,0,"",1,2,1,1,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen.",61,3,2,7981
+"130",26162,1,2,0,0,0,1,0,"",2,2,0,0,0,1,0,0,"",2,2,2,1,"",NA,NA,NA,"Geen",59,3,1,2582
+"131",26576,1,1,0,0,0,1,0,"",1,3,1,0,0,0,0,0,"",1,4,3,2,"3",2,2,1,"herkomst 
+kwalitiet
+houdbaarheid
+",54,3,1,3204
+"132",22512,1,4,1,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,3,4,1,"",NA,NA,NA,"Geen",77,3,1,6813
+"133",26876,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,1,0,"",2,1,1,1,"",NA,NA,NA,"Geen ik vind het goed zo.",71,3,2,5011
+"134",22566,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Waar ze vandaan komen",76,3,1,7152
+"135",24408,1,2,0,0,1,0,0,"",NA,NA,1,1,1,0,1,0,"",1,4,1,1,"",NA,NA,NA,"Of ze fairtraid zijn",61,3,1,2612
+"136",28877,1,4,0,1,0,1,0,"",2,2,1,0,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"Ik zoek het niet op",72,3,1,4356
+"137",23574,1,1,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,3,2,1,"",NA,NA,NA,"geen",73,3,2,3313
+"138",29658,1,4,0,0,0,1,0,"",2,2,0,0,0,0,0,0,"",2,3,5,1,"",NA,NA,NA,"geen enkele
+
+banaan is banaan
+geen intresse in wie, wat, waar en hoe over een banaan",70,3,1,7151
+"139",17801,1,1,0,0,0,1,0,"",2,2,1,1,0,0,1,0,"",2,3,2,1,"",NA,NA,NA,"ik zoek niets op over bananen",47,2,2,3991
+"140",26912,1,3,0,0,0,1,1,"Ekoplaza",2,2,1,0,0,0,0,0,"",1,4,1,1,"",NA,NA,NA,"Of het ook echt fairtrade is",61,3,2,2026
+"141",23277,1,1,0,0,0,1,0,"",2,2,0,0,0,0,0,1,"Duurder",2,1,5,1,"",NA,NA,NA,"Geen",55,3,2,2665
+"142",18277,1,2,0,1,0,1,0,"",2,2,1,1,0,0,0,0,"",1,4,1,1,"",NA,NA,NA,"Ik vind het interessant  om meer te weten over wie <U+0091>mijn<U+0092> banenen verbouwt en hoe dat gebeurt. Ik wist niet dat je dat kon opzoeken op de site van de Plus, leuk! Ik geloof dat mijn Plus alleen de gewone Fairtrade bananen verkoopt.",43,2,2,8084
+"143",24305,1,1,1,1,0,1,0,"",2,2,1,1,0,1,0,0,"",2,2,2,1,"",NA,NA,NA,"Herkomst biomogisch",63,3,1,4706
+"144",24166,1,4,1,0,0,0,0,"",2,2,1,0,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"niet chemisch behandeld, eerlijke prijs",69,3,2,7322
+"145",29751,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen",67,3,2,2101
+"146",25960,1,2,1,0,0,0,0,"",2,2,0,0,0,1,0,0,"",2,1,3,1,"",NA,NA,NA,"Ik zou niks opzoeken",62,3,2,8501
+"147",24829,1,1,1,1,0,1,0,"",1,1,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"waar ze vandaan komen en hoeveel suikers ze bevatten",63,3,1,7422
+"148",29008,1,3,1,0,0,1,0,"",2,2,1,0,0,1,0,0,"",1,1,3,1,"",NA,NA,NA,"Ik zoek niet naar dergelijke informatie.",70,3,1,2804
+"149",27699,1,5,0,1,0,0,0,"",3,3,1,0,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"al eerder beantwoord jullie gaan er van uit dat ik/wij boodschappen doen bij de plus.!!??? het antwoord was Wel <e9><e9>ns....",58,3,2,5241
+"150",26391,1,1,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"Herkomst (welk land) <e9>n versheidsdatum.",66,3,1,1112
+"151",25072,1,2,0,0,0,1,0,"",2,1,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"hoe ze geproduceerd zijn en of de boeren een eerlijke prijs krijgen",60,3,2,1311
+"152",23388,1,1,0,1,0,0,0,"",2,2,1,0,0,0,0,0,"",1,1,1,1,"",NA,NA,NA,"Herkomst en houdbaarheidsdatum",76,3,2,9642
+"153",22881,1,3,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"van waar ze komen?",63,3,2,8531
+"154",29864,1,3,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"geen idee, ik zoek alleen informatie over producten die ik koop als er iets mis mee is",64,3,1,3123
+"155",21254,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Ik denk geen enkele",67,3,2,5671
+"156",27787,1,5,1,1,0,1,0,"",2,2,1,1,1,1,0,0,"",1,4,2,1,"",NA,NA,NA,"Ik zou het nu op dit nog niet weten",77,3,1,5803
+"157",24721,1,1,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"Nooit aan gedacht. Zal zeker doen. Ben al meer fairtrade produkten te gaan kopen om de mensen achter het product te ondersteunen en maar ook het produkt beter is. Dan de massa produktie, dat is vaak voel met van alles en nog wat vol gepropt is.",56,3,2,5629
+"158",22960,1,4,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"Goede prijs voor de boeren, geen of weinig milieubelastend.",64,3,1,1992
+"159",21099,1,12,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,3,2,1,"",NA,NA,NA,"of ze eerlijk geproduceerd zijn en boilogisch",52,3,2,2281
+"160",28450,1,1,0,1,0,0,0,"",2,2,1,1,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"Informatie over de situatie van de boeren en hun beloning",61,3,1,2871
+"161",19701,1,3,0,0,0,1,0,"",2,1,1,0,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"geen",39,2,1,4931
+"162",20263,1,4,0,0,1,0,0,"",NA,NA,1,1,0,0,0,0,"",1,4,5,1,"",NA,NA,NA,"Geen",51,3,1,6578
+"163",24131,1,2,0,1,0,0,0,"",1,2,1,0,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"geen",78,3,1,1826
+"164",21888,1,1,1,0,0,0,0,"",2,2,1,1,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Op gebruik van bestrijdingsmiddelen.",74,3,1,3222
+"165",28606,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,2,1,1,"",NA,NA,NA,"Geen",74,3,2,6212
+"166",24683,1,2,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Waar ze vandaan komen",60,3,1,4709
+"167",18462,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,4,1,"",NA,NA,NA,"geen, een banaan is een banaan. Proef geen verschil.",49,2,2,7006
+"168",20583,1,1,0,1,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"geen enkele",62,3,2,7622
+"169",24136,1,2,1,0,0,0,0,"",1,1,1,1,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Ik zoek zoiets nooit op",70,3,1,8224
+"170",23122,1,1,0,1,0,1,0,"",2,2,1,0,0,0,0,0,"",1,3,3,1,"",NA,NA,NA,"geen",75,3,1,1446
+"171",29721,1,4,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"Uit welk land het komt en of ze een goede prijs krijgen",76,3,2,7902
+"172",20974,1,3,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"geen",63,3,1,7431
+"173",28979,1,4,0,0,0,1,0,"",2,3,1,0,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"niets",60,3,2,3680
+"174",25811,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"geen idee, heb er nooit aan gedacht om daar informatie over op te zoeken",66,3,1,7621
+"175",20255,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,4,1,"",NA,NA,NA,"Geen
+
+",59,3,2,5507
+"176",26232,1,4,0,0,1,0,0,"",NA,NA,1,1,0,0,0,0,"",1,2,1,2,"Wel al een flinke poos geleden",2,1,1,"Wil zeker weten dat het Fairtrade bananen zijn",61,3,1,4524
+"177",27453,1,2,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,2,1,2,"1",2,1,1,"Waar vandaan. Hoe e.e.a. bijdraagt aan welzijn boeren",60,3,2,3223
+"178",20768,1,5,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Ik zoek geen informatie over bananen",65,3,1,3142
+"179",25580,1,3,0,0,1,0,0,"",NA,NA,1,1,1,1,1,0,"",1,4,2,1,"",NA,NA,NA,"Niets ik ga er van uit dat het goed is.",63,3,1,5508
+"180",25863,1,2,0,0,0,1,0,"",2,2,1,1,0,0,1,0,"",1,2,2,2,"1",2,1,1,"herkomst
+wel of niet fairtrade
+
+",62,3,2,5081
+"181",14032,1,1,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"Oorsprong (land, regio, identificatienummer producent) en  geldigheid Fairtrade-label",45,2,1,3271
+"182",21046,1,5,0,0,0,1,0,"",3,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Hoe er met de boeren en het land wordt omgegaan",56,3,2,2661
+"183",27041,1,3,1,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"Of ze fairtrade zijn",77,3,1,5368
+"184",28240,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,3,3,1,"",NA,NA,NA,"Geen",70,3,1,7601
+"185",26761,1,2,1,0,0,1,0,"",2,2,0,0,0,0,1,0,"",1,4,5,2,"1",2,3,3,"veel en meer voor het GELD VAN DE DANANEN .",74,3,1,6971
+"186",29594,1,4,0,0,0,1,0,"",1,2,1,0,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"Waar komen ze vandaan en hoe zien ze uit",58,3,1,6161
+"187",21777,1,3,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,4,1,"",NA,NA,NA,"Maakt mij niet uit. Ik eet ze.  Ik kan niets veranderen aan de natuur en afkomst.  Ik heb ik Afrika vakantienieuws.  Dus veel gezien",54,3,2,7604
+"188",27232,1,1,0,0,0,1,0,"",1,1,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Geen",60,3,2,3261
+"189",24204,1,1,1,0,0,0,1,"landwinkel",2,2,1,1,0,1,0,0,"",1,4,2,1,"",NA,NA,NA,"Hoe ze geteeld worden en waar",62,3,2,3411
+"190",23264,1,3,0,0,0,1,0,"",2,2,1,1,0,1,1,0,"",1,4,2,1,"",NA,NA,NA,"geen",79,3,2,6247
+"191",23425,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,5,1,"",NA,NA,NA,"Niets",52,3,2,8243
+"192",20410,1,3,0,0,0,1,0,"",2,2,1,1,0,1,0,0,"",2,4,2,1,"",NA,NA,NA,"Niets",57,3,2,7075
+"193",25329,1,1,0,0,0,1,0,"",2,2,1,1,0,0,1,0,"",1,3,2,1,"",NA,NA,NA,"Naast het loon voor de landarbeiders ben ik ook benieuwd naar gebruik mogelijke bestrijdingsmiddelen en wel traject de banaan aflegt tussen boom tot schap supermarkt.
+",63,3,2,6042
+"194",22859,1,2,0,0,1,0,0,"",NA,NA,1,1,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Waar ze vandaan komen.",62,3,1,1335
+"195",21095,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"Ik zoek nooit naar bananen op een website kijk altijd naar de actie prijzen in de folders.",79,3,1,3123
+"196",26557,1,1,0,0,0,1,0,"",2,1,1,1,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Ik denk niet dat ik die moeite zal nemen.",59,3,1,7555
+"197",28607,1,1,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"waar ze vandaan komen",69,3,2,3524
+"198",27552,1,2,0,0,0,1,0,"",1,1,1,1,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"Of het allemaal wel klopt dat fairtrade gedoe.",69,3,1,4707
+"199",23226,1,2,1,1,0,1,0,"",2,1,1,1,0,1,1,0,"",2,2,1,1,"",NA,NA,NA,"Waar komen ze vandaan? Zijn ze biologisch en fairtrade",72,3,2,3773
+"200",25273,1,4,0,0,0,1,0,"",2,2,1,0,0,1,0,0,"",1,2,3,1,"",NA,NA,NA,"info over fairtrade",77,3,1,5036
+"201",22668,1,2,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"geen",76,3,1,2711
+"202",22445,1,2,0,0,0,0,1,"natuurvoedingswinkel",3,3,1,1,0,0,1,0,"",2,2,1,1,"",NA,NA,NA," info over de boer en de plaats waar hij/zij verbouwt",51,3,1,3704
+"203",27619,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Ik zoek wat kleinere  ananen",82,3,1,7927
+"204",22606,1,5,0,1,0,1,0,"",2,2,1,1,1,1,1,0,"",2,4,2,1,"",NA,NA,NA,"Uit welk land ze komen en hoe de leefomstandigheden daar zijn van de boeren en andere medewerkers.",71,3,1,4564
+"205",23045,1,4,0,1,0,0,0,"",2,2,1,0,0,0,0,0,"",2,1,3,1,"",NA,NA,NA,"Waar ze vandaan komen",70,3,2,3443
+"206",23780,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"in de regel niet, ik vertrouw de info van de Plus",60,3,2,7711
+"207",22557,1,1,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,5,1,"",NA,NA,NA,"Geen",62,3,1,7483
+"208",25686,1,4,0,0,1,0,0,"",NA,NA,1,1,0,0,1,0,"",2,3,3,1,"",NA,NA,NA,"geen",68,3,1,6041
+"209",22786,1,6,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Hoe en waar ze verbouwd worden en vervoerd",68,3,2,5423
+"210",25164,1,1,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Niets",62,3,1,3417
+"211",29440,1,4,0,1,0,0,0,"",2,2,1,0,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"Koop altijd bio bananen",63,3,2,4353
+"212",23615,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Niets",64,3,2,2903
+"213",19929,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"geen",82,3,1,7631
+"214",25165,1,4,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"eigenlijk niets. we eten in nederland maar 1 soort bananen.",68,3,1,3442
+"215",24139,1,5,0,0,0,1,0,"",1,2,1,0,0,0,0,0,"",1,3,1,1,"",NA,NA,NA,"waar ze vandan komen",55,3,2,1058
+"216",26184,1,5,0,0,0,1,0,"",2,1,1,1,0,0,1,0,"",1,3,3,1,"",NA,NA,NA,"Geen",59,3,1,6666
+"217",25078,1,1,0,0,0,1,0,"",2,2,1,1,0,1,0,0,"",1,4,1,1,"",NA,NA,NA,"Ik wil zeker weten of ze werkelijk uit het land komen, waarvan ik naar aanleiding van het etiket denk, dat ze komen en of bekend is van welke boer of co<f6>peratie van boeren de bananen komen. En of ze een fatsoenlijke prijs hebben gekregen.",73,3,2,2903
+"218",21004,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,5,1,"",NA,NA,NA,"geen",52,3,1,6085
+"219",29505,1,4,0,0,0,1,0,"",3,2,1,0,0,0,0,0,"",1,4,4,1,"",NA,NA,NA,"Geen. Mij boeit alleen de prijs die ik als consument moet betalen.",56,3,1,5628
+"220",27706,1,4,0,0,0,1,0,"",1,2,1,0,0,0,0,0,"",2,2,3,1,"",NA,NA,NA,"of het eerlijke  fairtrade bananen  zijn",61,3,1,5042
+"221",27989,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"geen",68,3,1,9724
+"222",28273,1,3,1,1,0,1,0,"",2,2,1,1,1,1,1,0,"",1,4,2,2,"2",2,1,1,"Waar ze vandaan komen en onder welke omstandigheden ze zijn geteeld.",71,3,1,4564
+"223",23528,1,4,1,0,0,0,0,"",1,2,1,1,0,0,1,0,"",1,1,2,1,"",NA,NA,NA,"Waar ze inderdaad vandaan komen, en hoelang ze onderweg zijn, en of het allemaal eerlijk is gegaan",67,3,1,5629
+"224",20109,1,1,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Ik wist dit niet,ga het zeker doen.",71,3,2,8121
+"225",22632,1,2,0,0,0,1,0,"",2,2,1,0,0,1,0,0,"",1,1,3,1,"",NA,NA,NA,"Hoe het verwerkt is.",53,3,2,4708
+"226",25569,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Hoe de bananen tot hier geraken en info over de omstandigheden van de teler.",61,3,1,6214
+"227",28804,1,3,0,0,0,1,0,"",2,2,1,1,0,1,0,0,"",1,1,3,2,"2",2,2,2,"Geen andere bananen verkopen ze niet",51,3,2,7651
+"228",22150,1,2,0,1,0,0,0,"",3,1,1,1,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"hoe deze er uitzien",82,3,1,3195
+"229",25190,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,3,3,1,"",NA,NA,NA,"Geen",55,3,1,3449
+"230",29646,1,4,0,1,0,0,0,"",2,2,1,0,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"waar ze vandaan komen",60,3,2,8081
+"231",20271,1,6,0,0,0,1,0,"",3,2,1,0,0,0,0,0,"",2,1,3,1,"",NA,NA,NA,"geen",73,3,1,6961
+"232",17520,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Waar ze vandaan komen en of ze gezonder zijn dan andere merken",38,2,2,6162
+"233",23454,1,2,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,2,3,1,"",NA,NA,NA,"houdbaarheid",69,3,1,1318
+"234",28396,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen.",50,3,1,6374
+"235",20814,1,1,1,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Niet opzoeken heeft Fairtrade al gedaan",76,3,2,3181
+"236",20005,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"waar ze vandaan komen",74,3,1,6374
+"237",26887,1,2,1,0,0,0,0,"",2,1,1,1,0,0,0,0,"",1,1,2,1,"",NA,NA,NA,"Geen, vertrouw supermarkt",86,3,1,5282
+"238",26080,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"geen",64,3,2,5165
+"239",21942,1,1,0,0,0,1,0,"",2,2,0,0,0,0,0,1,"Eerlijke handel",2,4,3,1,"",NA,NA,NA,"Geen",55,3,2,6581
+"240",15997,1,2,1,1,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"Waar het vandaan komt, fair-trade",36,2,1,2531
+"241",27229,1,2,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen",64,3,2,3769
+"242",27218,1,1,0,0,0,1,0,"",1,2,1,1,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"prijs",62,3,1,5684
+"243",14092,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,2,3,1,"",NA,NA,NA,"Geen",45,2,2,5845
+"244",27643,1,6,0,1,0,1,0,"",2,2,1,1,0,0,0,0,"",1,3,4,1,"",NA,NA,NA,"Als wielrenner ben ik ge<ef>nteresseerd in bananen die voldoende rijp zijn en daardoor voldoende suikers bevatten. De bananen die op het moment van kopen het best aan dat criterium voldoen, koop ik.",59,3,1,3451
+"245",26002,1,5,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"Welke bestrijdingsmiddelen de boeren gebruiken. En of er bos/oerwoud gekapt wordt om bananenplantages te maken.",60,3,2,6371
+"246",26841,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,5,1,"",NA,NA,NA,"GEEN ENKEL",55,3,2,1033
+"247",29074,1,2,1,0,0,0,0,"",2,2,1,1,0,0,1,0,"",2,4,3,1,"",NA,NA,NA,"Geen",67,3,1,5803
+"248",23026,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,1,2,1,"",NA,NA,NA,"Land van herkomst, arbeidsomstandigheden",67,3,1,9675
+"249",19959,1,2,1,0,0,0,0,"",1,1,1,0,1,0,0,0,"",1,4,1,1,"",NA,NA,NA,"Waar van daar komen",69,3,1,6418
+"250",29361,1,1,0,0,0,1,0,"",2,2,1,1,0,1,1,0,"",1,4,2,1,"",NA,NA,NA,"Of de boeren een goede prijs ktijgen",66,3,2,7031
+"251",25043,1,3,0,0,0,1,0,"",2,2,0,1,0,0,0,0,"",1,4,4,1,"",NA,NA,NA,"Geen,Ik koop ze om te eten, niet voor informatie.",71,3,1,3401
+"252",29504,1,4,1,1,0,1,0,"",2,2,1,1,0,0,0,0,"",2,2,1,1,"",NA,NA,NA,"Hoe men in het land van herkomst met de boeren om gaan",72,3,2,7831
+"253",20578,1,2,1,0,0,0,0,"",2,2,1,1,1,1,1,0,"",1,4,2,1,"",NA,NA,NA,"herkomst, pesticide gebruik, eerlijke prijs boeren",60,3,1,3560
+"254",20562,1,2,0,0,1,0,0,"",NA,NA,1,1,1,0,1,0,"",1,3,2,1,"",NA,NA,NA,"Geen",74,3,1,2352
+"255",23478,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,2,3,1,"",NA,NA,NA,"geen - vertrouw op informatie winkels
+",63,3,1,4051
+"256",22377,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Eventueel als ik zin en tijd heb waar deze vandaan komen.
+Dat kan je ook vaak zien aan de fruitsticker.",70,3,1,1109
+"257",18699,1,1,0,1,0,0,0,"",2,2,1,1,0,0,0,0,"",1,2,3,1,"",NA,NA,NA,"geen informatie. Ik vertrouw op een goede inkoop",42,2,2,8415
+"258",25557,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Afkomst",69,3,2,6097
+"259",22896,1,3,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen",83,3,1,2935
+"260",20913,1,2,1,0,0,1,0,"",2,1,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen",68,3,2,3123
+"261",19305,1,5,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"geen",46,2,2,4273
+"262",22642,1,1,1,0,0,0,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen enkele",82,3,1,2641
+"263",24013,1,2,0,0,0,1,0,"",2,2,1,1,0,0,1,0,"",2,4,3,1,"",NA,NA,NA,"Geen",65,3,2,4333
+"264",13607,1,2,0,0,0,1,0,"",2,2,0,1,0,0,0,0,"",1,2,3,1,"",NA,NA,NA,"weinig tot geen",46,2,1,2041
+"265",26541,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,2,3,1,"",NA,NA,NA,"In hoeverre er bestrijdingsmiddelen zijn gebruikt bij de verbouw er van.",72,3,1,7742
+"266",21760,1,4,0,0,0,1,0,"",2,1,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen",60,3,2,4142
+"267",22823,1,5,0,1,0,1,0,"",2,2,1,1,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen",58,3,2,6869
+"268",20753,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,1,1,1,"",NA,NA,NA,"Productieproces en vervoer",71,3,1,6373
+"269",26836,1,8,0,0,0,1,0,"",2,2,1,0,0,0,1,0,"",2,3,4,1,"",NA,NA,NA,"Niets",67,3,2,2742
+"270",28226,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"Over de herkomst.",89,3,1,8861
+"271",27146,1,4,1,0,0,1,0,"",1,2,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"waar komen ze vandaan",51,3,1,5685
+"272",22459,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"niet",72,3,1,5508
+"273",24468,1,3,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Inderdaad waar ze vandaan komen, eerlijke prijs, goed voor betreffende boeren, dus Fairtrade.",57,3,1,5402
+"274",25012,1,1,0,1,0,0,0,"",2,1,1,1,0,1,0,0,"",1,2,1,1,"",NA,NA,NA,"Waar deze vandaan komen",68,3,1,2907
+"275",28393,1,4,0,0,0,1,0,"",1,1,1,1,1,1,1,0,"",1,1,1,1,"",NA,NA,NA,"Waar ze vandaan komen,uit welk land,en of ze goed behandelt zijn enzo",51,3,2,9602
+"276",17365,1,4,0,1,0,0,0,"",2,1,1,1,0,0,0,0,"",1,3,3,1,"",NA,NA,NA,"Goeie vraag. Geen idee. Ik wil niet over alles nadenken of opzoeken wat ik koop. Zou een dagtaak gaan worden",44,2,2,7414
+"277",20008,1,4,1,0,0,1,0,"",2,2,1,0,0,0,1,0,"",2,3,4,1,"",NA,NA,NA,"Geen",63,3,1,5038
+"278",24974,1,8,0,0,0,1,0,"",1,2,1,0,0,0,0,0,"",2,4,1,1,"",NA,NA,NA,"Land van productie , of de boeren een faire prijs ontvangen , of de boeren ook worden geholpen bij het verzekeren van hun toekomst",63,3,1,3056
+"279",23783,1,1,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"hoe de leefomstandigheden zijn",72,3,2,2563
+"280",21851,1,4,0,0,0,1,0,"",3,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen, ik vind de smaak, hoe ze eruitzien en de prijs belangrijk verder maakt het mij niet uit waar ze vandaan komen",63,3,2,6871
+"281",22739,1,3,0,1,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"waar ze vandaan komen",63,3,1,3274
+"282",23294,1,5,0,0,1,0,0,"",NA,NA,1,1,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"hoe het leven van de boeren is.",61,3,2,3043
+"283",26443,1,3,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",2,1,2,1,"",NA,NA,NA,"Eigenlijk geen enkele informatie",72,3,2,7482
+"284",24069,1,8,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,2,2,"8",2,2,1,"Waar ze vandaan komen",72,3,1,3583
+"285",23375,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Ik koop Fairtrade en kijk verder niet waar het vandaan.komt.",70,3,2,6573
+"286",25858,1,2,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Nee.",62,3,2,5014
+"287",20454,1,8,0,0,0,1,0,"",2,1,1,0,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"Waar ze vandaan komen",73,3,2,5525
+"288",28801,1,3,1,0,0,0,0,"",2,1,1,0,0,1,0,0,"",2,4,3,1,"",NA,NA,NA,"Geen",66,3,1,5988
+"289",20329,1,3,0,0,0,1,0,"",2,2,1,0,0,1,0,0,"",1,4,2,1,"",NA,NA,NA,"Herkomst goede beh<e4>ndeling boeren",75,3,1,3343
+"290",27510,1,3,0,1,0,0,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"De mensen die het verbouwen, en is hun levensstandaard verbeterd",55,3,1,4532
+"291",23566,1,6,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,1,1,"",NA,NA,NA,"geen, ik neem aan dat het label fair trade in orde is",68,3,2,9469
+"292",26632,1,3,0,0,0,1,0,"",2,1,1,0,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"waar ze vandaan komen en door wie geproduceerd",65,3,1,3564
+"293",23136,1,2,1,1,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"geen, gaat mij erom dat ze fairtrade zijn",61,3,1,7463
+"294",24482,1,4,1,1,0,0,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Waar vandaan en tegen welke prijs gekocht van de boer",57,3,1,5373
+"295",26712,1,3,0,0,0,1,0,"",1,1,1,0,0,0,1,0,"",1,4,2,1,"",NA,NA,NA,"ik zoek geen informatie, lees het etiket verder niets",71,3,2,2014
+"296",28467,1,2,0,0,0,1,0,"",2,2,0,0,1,0,0,0,"",2,3,5,1,"",NA,NA,NA,"ik zoek niks op dat interseerd mij niet",51,3,1,2935
+"297",26102,1,1,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"google zoeken op fairtrade",69,3,1,5283
+"298",26221,1,3,0,0,0,1,0,"",2,2,1,1,0,1,0,0,"",1,4,2,1,"",NA,NA,NA,"GEEN",50,3,1,3255
+"299",20035,1,1,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen",71,3,1,1023
+"300",17372,1,1,0,0,0,1,0,"",2,1,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Helemaal geen info zoeken want koop ze omdat we ze eten en goedkoop zijn",44,2,2,1032
+"301",27275,1,2,1,1,0,0,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"geen want ik ga op mijn zicht en gevoel af",61,3,1,2331
+"302",25708,1,10,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,4,1,"",NA,NA,NA,"geen",59,3,1,1404
+"303",23295,1,2,1,0,0,0,0,"",2,2,1,1,0,0,0,0,"",2,2,3,1,"",NA,NA,NA,"Geen",58,3,2,2313
+"304",12572,1,2,1,0,0,0,0,"",2,2,1,1,1,1,1,0,"",1,1,2,1,"",NA,NA,NA,"Op welke manier en waar ze zijn gemaakt.",47,2,2,9079
+"305",26469,1,2,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"of ze fairtrade zijn
+",74,3,2,5802
+"306",28506,1,1,1,1,0,1,0,"",2,2,1,1,0,1,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen info",71,3,2,5036
+"307",14978,1,3,0,0,0,1,0,"",2,2,0,1,0,0,0,0,"",2,2,3,1,"",NA,NA,NA,"Eigenlijk niks, ik draag al bij als ik fairtrade bananen koop",47,2,2,7482
+"308",25180,1,2,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,3,2,1,"",NA,NA,NA,"Geen geloof de plus als ze aangeven dat ze fair trade zijn",63,3,2,7605
+"309",28691,1,2,0,0,0,1,0,"",3,1,1,0,0,0,0,0,"",1,4,2,2,"1",1,1,2,"waar komen ze vandaan",63,3,1,6133
+"310",25400,1,1,0,0,0,1,0,"",2,2,0,0,0,0,1,0,"",1,3,3,1,"",NA,NA,NA,"geen",73,3,1,7241
+"311",25643,1,5,0,0,0,1,0,"",2,1,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Waar ze vandaan komen",69,3,2,1107
+"312",26528,1,1,0,0,1,0,0,"",NA,NA,0,0,1,0,0,0,"",1,4,3,1,"",NA,NA,NA,"geen, kijk altijd hoe ze er uitzien, kleur en rijpheid",64,3,2,7607
+"313",29550,1,4,0,0,0,1,0,"",2,2,1,1,1,1,0,0,"",1,2,2,1,"",NA,NA,NA,"Alleen bio",63,3,2,7141
+"314",22804,1,1,1,0,0,0,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Niets speciaal",75,3,1,5551
+"315",24656,1,5,0,0,0,1,0,"",3,1,0,0,0,1,1,0,"",1,4,4,1,"",NA,NA,NA,"Geen",63,3,1,1443
+"316",29883,1,5,0,0,0,1,0,"",2,2,1,0,0,1,0,0,"",1,4,2,1,"",NA,NA,NA,"houdbaarheid ,m.i. is het in de winkel te koud voor bananen",82,3,1,6713
+"317",24059,1,2,0,0,0,1,0,"",1,2,1,0,0,1,0,0,"",2,1,2,2,"4",2,2,2,"kwaliteit",61,3,2,8862
+"318",20265,1,1,1,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"niet",66,3,2,3621
+"319",26903,1,2,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Waar de bananen vandaan komen. Dat ze goed zijn wist ik al.",79,3,2,2902
+"320",23077,1,4,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"Niet",62,3,1,5672
+"321",29294,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Geen",55,3,1,6051
+"322",22950,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,4,1,"",NA,NA,NA,"Ik zou helemaal informatie opzoeken, wat een onzin allemaal.",72,3,1,3454
+"323",26884,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"geen",69,3,2,2565
+"324",19841,1,3,0,1,0,1,0,"",2,2,1,0,0,0,0,0,"",2,1,2,1,"",NA,NA,NA,"Waar de bananen vandaan komen en hoe ze worden geteeld.",40,2,2,2271
+"325",21661,1,1,0,0,0,1,0,"",2,2,1,1,0,1,0,0,"",1,3,2,1,"",NA,NA,NA,"Niets",58,3,2,3818
+"326",25884,1,3,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,3,3,1,"",NA,NA,NA,"Niets! Ik maak me niet overal druk over!
+Heb genoeg aan mijn eigen familie.
+Waar de banaan vandaan komt vind ik niet echt belangrijk.",78,3,2,3434
+"327",23972,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,4,1,"",NA,NA,NA,"Niets",56,3,1,3192
+"328",11633,1,3,1,1,0,1,0,"",2,2,1,0,0,0,0,0,"",1,3,3,1,"",NA,NA,NA,"Geen",43,2,2,5481
+"329",23823,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,1,1,"",NA,NA,NA,"GEEN",70,3,1,3068
+"330",22808,1,2,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,4,4,1,"",NA,NA,NA,"Geen",63,3,2,6883
+"331",24857,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,4,1,"",NA,NA,NA,"geen",62,3,1,5012
+"332",26816,1,2,0,0,0,1,0,"",3,3,1,0,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"waar verbouwd",73,3,2,6824
+"333",21010,1,6,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"hoe de boeren beloont",64,3,1,1355
+"334",28716,1,4,0,0,0,1,0,"",2,2,1,1,0,1,0,0,"",2,4,2,1,"",NA,NA,NA,"geen info",68,3,1,9561
+"335",28051,1,2,1,0,0,0,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"geen",63,3,1,5144
+"336",27795,1,2,0,0,0,1,0,"",3,1,1,1,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"Eerlijke prijzen voor de boeren
+Zijn deze bananen onbespoten",53,3,1,6713
+"337",27620,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,4,1,"",NA,NA,NA,"Geen. Nog nooit gedaan",61,3,2,3523
+"338",27158,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"geen",71,3,1,4891
+"339",22720,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"bananen fairtrade",59,3,2,9781
+"340",19956,1,2,0,0,0,1,0,"",2,2,1,1,0,0,1,0,"",2,3,3,1,"",NA,NA,NA,"geen",66,3,1,4241
+"341",27819,1,3,1,0,0,0,0,"",2,2,1,1,0,1,0,0,"",1,4,3,1,"",NA,NA,NA,"Ik zoek meestal geen informatie over bananen als ik weet dat ze fairtrade zijn. Ik eet ze liever op.",55,3,2,6214
+"342",21184,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"geen informatie",60,3,2,7553
+"343",26753,1,2,1,0,0,0,0,"",2,2,1,1,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"Of ze gifloos zijn opgegroeid en of de boer er naar behoren aan verdient",59,3,1,7261
+"344",22504,1,1,0,0,0,1,0,"",2,1,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"niks",53,3,2,5509
+"345",29100,1,4,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"Of ze fairtrade zijn en uit welk land ze komen",69,3,1,4634
+"346",28231,1,3,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen",57,3,2,1273
+"347",22263,1,1,0,0,0,1,0,"",2,1,1,0,0,0,1,0,"",1,1,3,1,"",NA,NA,NA,"Niets",69,3,1,3343
+"348",17934,1,4,0,0,0,1,0,"",2,2,1,1,0,1,0,0,"",1,1,3,1,"",NA,NA,NA,"Hoe lang duurt het om bananen te laten groeien",49,2,1,4703
+"349",23499,1,12,0,0,0,1,0,"",2,1,1,1,0,1,1,0,"",1,4,2,1,"",NA,NA,NA,"Hoeveel van de prijs die ik betaal naar de boeren gaat.",65,3,2,8245
+"350",22025,1,1,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,1,2,1,"",NA,NA,NA,"Ik zoek geen informatie over bananen op, als ik deze heb gekocht.",52,3,1,7101
+"351",25323,1,4,0,0,0,1,0,"",1,1,1,0,0,1,0,0,"",1,1,3,1,"",NA,NA,NA,"niets",57,3,1,4706
+"352",13223,1,1,1,0,0,1,0,"",2,2,1,1,0,0,1,0,"",2,3,2,1,"",NA,NA,NA,"Geen",44,2,2,4731
+"353",17238,1,4,1,1,0,0,0,"",2,1,1,0,0,0,0,0,"",1,4,2,2,"1",1,1,1,"Wat het de boeren opleverde",48,2,2,2645
+"354",26621,1,4,0,0,0,1,0,"",2,1,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen",82,3,1,3171
+"355",29039,1,4,1,0,0,0,0,"",1,2,1,1,0,0,0,0,"",2,1,2,1,"",NA,NA,NA,"Graag, de herkomst,",63,3,2,5011
+"356",26009,1,2,1,0,0,0,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Waar ze vandaan komen",64,3,2,4335
+"357",12242,1,1,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,4,4,1,"",NA,NA,NA,"niet",37,2,2,6215
+"358",25257,1,1,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,3,2,2,"1",2,1,1,"waar ze vandaan komen",70,3,1,7555
+"359",29773,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Niet",67,3,2,6418
+"360",26780,1,3,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,1,3,1,"",NA,NA,NA,"Geen",76,3,1,4691
+"361",27851,1,1,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",2,2,3,1,"",NA,NA,NA,"Geen",69,3,2,3584
+"362",20776,1,2,0,0,0,1,0,"",2,2,1,0,0,0,1,0,"",2,4,3,1,"",NA,NA,NA,"niks eigenlijk ik heb genoeg aan de bestaande informatie.",63,3,1,9791
+"363",22170,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Waar ze vandaan komen.",71,3,1,5731
+"364",23436,1,4,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Waar ze vandaan komen",55,3,2,8131
+"365",16117,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Als ik meer tijd had, zou ik de informatie over de boeren waar de bananen vandaan komen willen lezen. Ik wist tot deze enqu<ea>te niet dat dit een optie was.",49,2,2,2635
+"366",6519,1,6,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen",32,1,2,1991
+"367",24269,1,2,0,1,0,1,0,"",3,2,1,0,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"Geen",71,3,1,7555
+"368",13770,1,4,1,0,0,1,0,"",2,2,0,0,0,1,0,0,"",1,4,3,2,"2",2,2,2,"Interessant waar die vandaan komt en hoe ze zijn geoogst en gepland",49,2,2,9172
+"369",24201,1,2,0,0,1,0,0,"",NA,NA,1,1,0,0,0,0,"",1,4,1,1,"",NA,NA,NA,"Niks",74,3,2,1115
+"370",28115,1,2,0,1,0,0,0,"",2,2,1,1,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"fairtrade site",77,3,1,4844
+"371",21460,1,1,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"Waar zijn deze gekweekt",70,3,1,3328
+"372",20440,1,3,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"niet",76,3,1,3333
+"373",23589,1,1,0,0,0,1,0,"",1,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen",58,3,1,7552
+"374",21387,1,2,0,0,0,1,0,"",2,1,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Ik zoek geen informatie",60,3,1,6417
+"375",15035,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,1,2,1,"",NA,NA,NA,"Wie de boer is en waar ze vandaan komen",43,2,1,3811
+"376",29229,1,4,0,0,0,1,0,"",2,1,1,1,1,1,1,0,"",2,4,2,1,"",NA,NA,NA,"Geen",56,3,2,1273
+"377",22124,1,1,0,0,0,1,0,"",2,1,1,1,0,0,0,0,"",1,3,3,1,"",NA,NA,NA,"Natuurlijke voedingsproducten.",71,3,1,4641
+"378",22756,1,30,1,0,0,1,0,"",2,1,1,1,0,1,1,0,"",1,3,2,1,"",NA,NA,NA,"eigenlijk alles",59,3,2,5683
+"379",26715,1,4,0,0,1,0,0,"",NA,NA,0,0,0,0,1,0,"",1,4,2,2,"10",2,1,1,"geen alles  is goed uit gezocht en gekeurd 
+",69,3,1,1964
+"380",22210,1,3,0,0,1,0,0,"",NA,NA,1,0,0,0,1,0,"",1,4,3,1,"",NA,NA,NA,"ik eet ze op, ik zoek geen informatie",62,3,1,6865
+"381",23505,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,2,2,"1",2,1,1,"Geen",66,3,1,2025
+"382",27443,1,1,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",2,3,4,1,"",NA,NA,NA,"zoek geen info gaat mij of de smaak goed is",72,3,1,7691
+"383",23168,1,8,1,0,0,0,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Hoe de bananen geteeld worden en hoe de omstandigheden zijn voor de mensen die in die branche werken.",60,3,1,9402
+"384",26951,1,1,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"Of de boeren er een eerlijke prijs voor krijgen",64,3,1,1071
+"385",25309,1,5,0,0,0,1,0,"",2,1,1,0,0,0,0,0,"",1,4,2,2,"4",2,1,1,"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Welk land en de streek van herkomst.
+
+
+
+
+
+",79,3,1,6343
+"386",20699,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,4,1,"",NA,NA,NA,"Niks opzoeken, gewoon lekker opeten.",70,3,1,5706
+"387",24919,1,2,1,0,0,0,0,"",2,2,1,1,0,1,0,0,"",1,2,1,1,"",NA,NA,NA,"Waar ze precies vandaan komen.",50,3,2,2034
+"388",25127,1,2,0,1,0,0,0,"",2,2,1,1,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Land van herkomst
+",77,3,1,3781
+"389",26608,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen",70,3,1,3232
+"390",12599,1,4,1,0,0,1,0,"",2,1,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Niks opzoeken vind het niet van belang",44,2,1,2613
+"391",25177,1,1,0,0,1,0,0,"",NA,NA,0,0,0,0,1,0,"",2,3,3,1,"",NA,NA,NA,"Geen idee hou me er niet mee bezig koop meestal als in de aanbieding zijn
+",59,3,1,2901
+"392",24971,1,4,1,0,0,0,0,"",2,2,1,1,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"Hoeveel schakels er tussen niet en plus zitten.",69,3,2,3583
+"393",26141,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen ze moeten gewoon lekker zijn",67,3,1,5527
+"394",20839,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Daar sta ik eigenlijk niet bij stil als ze maar smaken",66,3,2,3063
+"395",24194,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Niets",56,3,2,2661
+"396",18285,1,3,0,0,0,1,0,"",3,2,1,0,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"Waar ze precies vandaan komen",42,2,2,5712
+"397",25825,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,1,4,1,"",NA,NA,NA,"geen
+",64,3,1,5628
+"398",21480,1,4,0,0,0,1,0,"",1,1,1,0,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"Land van herkomst.",75,3,1,4131
+"399",28229,1,5,0,1,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"Geen informatie, ik ga er vanuit dat wat ik koop met dit label goed is en het geld eerlijk bij de teler komt",61,3,2,1424
+"400",21138,1,4,1,0,0,1,0,"",1,2,1,1,1,0,1,0,"",2,4,5,1,"",NA,NA,NA,"waarom ze krom zijn...",56,3,1,1181
+"401",28328,1,1,0,1,0,0,0,"",2,2,1,0,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"Herkomst",68,3,1,8224
+"402",10721,1,1,1,1,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"zolang de bananen goed van kleur zijn en een goede smaak hebben zie ik niet echt een reden om achterliggende informatie op te zoeken",49,2,1,4902
+"403",12264,1,4,0,0,0,1,0,"",1,1,1,1,0,0,1,0,"",1,4,2,1,"",NA,NA,NA,"Wat er gebeurt met de boeren die een fairtrade-logo hebben.",43,2,2,6846
+"404",10574,1,4,0,0,0,1,0,"",1,2,1,1,0,0,0,0,"",1,4,5,1,"",NA,NA,NA,"Hoe maak ik een bananentaart",43,2,1,7623
+"405",27946,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,2,1,1,"",NA,NA,NA,"Ik vertrouw er op dat de verstrekte informatie klopt !!!",63,3,1,9726
+"406",14165,1,1,0,0,1,0,0,"",1,1,0,0,1,0,0,0,"",2,3,1,1,"",NA,NA,NA,"nou dat weet ik niet",45,2,2,7462
+"407",24632,1,4,0,0,0,1,0,"",2,2,1,0,0,1,0,0,"",1,3,3,1,"",NA,NA,NA,"Geen",53,3,1,7607
+"408",22947,1,2,0,0,1,0,0,"",NA,NA,1,1,1,0,0,0,"",1,4,2,1,"",NA,NA,NA,"nou waar ze werkelijk vandaan komen",75,3,1,6291
+"409",29398,1,4,0,0,0,1,0,"",2,2,0,0,0,0,0,1,"geen idee, hoe betrouwbaar dit soort aanduidingen zijn",2,3,3,1,"",NA,NA,NA,"Geen",77,3,1,4753
+"410",12721,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,4,1,"",NA,NA,NA,"niet",42,2,2,5982
+"411",25144,1,2,0,1,0,0,0,"",2,3,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"waar ze vandaan komen",77,3,1,3122
+"412",23460,1,3,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Ik heb niets met de herkomst van bananen en ga ervan uit dat de bedrijven die bananen verkopen hier verantwoordelijk voor zijn en de overheid dit controleert.",62,3,1,2992
+"413",27042,1,1,0,0,0,1,0,"",3,1,1,1,0,0,0,0,"",2,1,2,1,"",NA,NA,NA,"Nooit bij nagedacht, maar of de boeren een goede prijs ontvangen voor hun oogst!",69,3,1,5283
+"414",24541,1,2,0,1,0,0,0,"",2,2,1,0,0,1,0,0,"",1,4,2,1,"",NA,NA,NA,"Ik zoek het niet op. Als Plus zo'n label erop zet, ga ik ervan uit dat het een verantwoorde keuze is.",64,3,2,5995
+"415",13967,1,1,1,0,0,1,0,"",2,3,0,0,0,0,0,1,"Fairtrade is toch een malafide keurmerk? Zogenaamd voor de boeren, maar eigenlijk voor de eigen inko",2,3,5,1,"",NA,NA,NA,"Geen",46,2,1,1335
+"416",22137,1,2,0,0,0,1,0,"",2,2,1,0,0,1,0,0,"",1,1,3,1,"",NA,NA,NA,"Waar ze vandaan komen en of ze gezond zijn.",68,3,1,3194
+"417",28655,1,4,0,0,1,0,0,"",NA,NA,1,0,0,1,0,0,"",1,4,2,1,"",NA,NA,NA,"herkomst en ontwikkeling",87,3,1,3281
+"418",20404,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,4,1,"",NA,NA,NA,"Geen",85,3,1,8355
+"419",20864,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen niet over nadenken gewoon op eten.",72,3,1,6841
+"420",20542,1,2,1,1,0,1,0,"",2,2,1,1,0,1,0,0,"",1,3,3,1,"",NA,NA,NA,"recepten",58,3,1,6161
+"421",13594,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,4,1,"",NA,NA,NA,"Niet",46,2,1,3141
+"422",13615,1,1,1,1,0,1,0,"",2,2,1,1,0,0,0,0,"",2,4,5,1,"",NA,NA,NA,"geen",44,2,1,7844
+"423",13724,1,2,0,0,1,0,0,"",NA,NA,1,0,0,0,1,0,"",1,4,3,1,"",NA,NA,NA,"geen",48,2,2,3064
+"424",23719,1,2,0,0,1,0,0,"",NA,NA,1,1,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"Waar ze geteeld zijn en hoe.
+De prijs is voor mij niet belangrijk, ik wil eerlijke bananen en een goed product",69,3,2,4231
+"425",26538,1,3,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,4,1,"",NA,NA,NA,"geen",73,3,1,2564
+"426",13839,1,1,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,4,1,1,"",NA,NA,NA,"Waar ze precies vandaan komen en of dat te traceren is.",45,2,1,7621
+"427",27774,1,2,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Niet",60,3,2,4486
+"428",23822,1,5,1,1,0,0,0,"",2,2,1,1,0,0,0,0,"",1,1,3,1,"",NA,NA,NA,"Waar ze vandaan komen.  Welke weg ze hebben afgelegd.",57,3,2,5427
+"429",26034,1,3,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Zou niets opzoeken",50,3,2,5991
+"430",23013,1,2,1,1,0,1,0,"",2,2,1,1,0,0,1,0,"",2,4,3,1,"",NA,NA,NA,"geen",74,3,1,1941
+"431",27984,1,2,0,0,0,1,0,"",2,3,1,0,0,0,0,0,"",1,1,4,1,"",NA,NA,NA,"Geen, prijs toch meestal doorslaggevend",52,3,2,6596
+"432",23424,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,1,2,1,"",NA,NA,NA,"Geen",70,3,1,7327
+"433",22669,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Algemene herkomst van de bananen",69,3,1,6443
+"434",11255,1,4,0,0,1,0,0,"",NA,NA,1,1,1,1,1,0,"",1,2,1,1,"",NA,NA,NA,"Geen",46,2,2,6247
+"435",25217,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,1,2,1,"",NA,NA,NA,"Niet",55,3,1,1106
+"436",28043,1,8,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Geen",72,3,1,3752
+"437",11793,1,2,1,0,0,0,0,"",2,2,1,0,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"Wat voor land ze zijn gekomen",49,2,1,8471
+"438",22620,1,6,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen",69,3,1,3811
+"439",23063,1,2,1,0,0,0,0,"",2,2,0,1,0,0,0,0,"",1,2,1,1,"",NA,NA,NA,"Wie plukt de bananen en onder welke omstandigheden",52,3,1,5709
+"440",28847,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,1,3,1,"",NA,NA,NA,"Geen",76,3,1,4281
+"441",5941,1,3,0,1,0,1,0,"",2,2,1,1,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Let ik nooit op, koop gewoon bananen",24,1,1,2995
+"442",13991,1,4,1,0,0,1,0,"",3,2,1,0,0,0,0,0,"",2,1,3,1,"",NA,NA,NA,"Geen",42,2,2,3181
+"443",19604,1,4,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"of ik er de boeren mee steun en hoe de steun voor de boeren eruit ziet",49,2,1,7553
+"444",20202,1,3,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,1,2,1,"",NA,NA,NA,"Wat het kost om die bananen naar de Plus te vervoeren",74,3,2,1067
+"445",26433,1,2,1,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"welk land",62,3,1,6461
+"446",10564,1,3,0,0,0,1,0,"",2,1,1,1,1,1,1,0,"",1,2,2,1,"",NA,NA,NA,"Hoe het nu met die boeren gaat. Levert het echt iets op?!",42,2,1,7622
+"447",26305,1,3,1,0,0,0,0,"",2,2,1,0,0,0,1,0,"",1,1,2,1,"",NA,NA,NA,"Hoe ze zo krom groeien",69,3,2,6866
+"448",13879,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,4,1,"",NA,NA,NA,"Niks",49,2,1,7711
+"449",18672,1,4,0,0,0,1,0,"",1,2,1,0,0,0,0,0,"",1,2,3,1,"",NA,NA,NA,"Over de plantage",35,2,2,7006
+"450",15983,1,4,0,1,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,4,1,"",NA,NA,NA,"de achtergrond",42,2,2,4461
+"451",21691,1,2,0,0,0,1,0,"",3,2,1,1,0,0,1,0,"",1,4,2,1,"",NA,NA,NA,"Omstandigheden van boeren en personeel. Hoe veilig en wat levert het de boeren op.",60,3,1,7255
+"452",20484,1,2,0,1,0,0,0,"",2,3,1,0,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"Waar ze vandaan komen. Eerlijke arbeidsvoorwaarden. Biologisch",62,3,2,6537
+"453",19197,1,1,0,0,0,1,0,"",2,2,1,0,0,1,0,0,"",1,4,3,1,"",NA,NA,NA,"Herkomst",49,2,1,5927
+"454",29006,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,3,3,1,"",NA,NA,NA,"Waar, hoe en wie.
+Eerlijke verdeling
+",68,3,2,8925
+"455",22706,1,6,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Of bieren echt en faire prijs krijgen",79,3,1,3343
+"456",25852,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,5,1,"",NA,NA,NA,"Zal iknietsnel doen",60,3,1,3531
+"457",22085,1,4,0,0,0,1,0,"",2,2,1,1,0,1,0,0,"",1,4,2,1,"",NA,NA,NA,"Waar ze vandaan komen",63,3,1,5921
+"458",29147,1,4,1,1,0,1,0,"",2,2,1,0,0,0,0,0,"",1,1,3,1,"",NA,NA,NA,"Niets",63,3,2,2548
+"459",25936,1,2,0,0,0,1,0,"",2,2,1,1,0,0,1,0,"",1,3,3,1,"",NA,NA,NA,"Ik zou niks opzoeken",59,3,2,5684
+"460",29197,1,4,0,1,0,0,0,"",2,2,1,0,0,0,0,0,"",2,3,4,1,"",NA,NA,NA,"Eigenlijk niets.",62,3,1,4102
+"461",13990,1,4,0,0,0,1,0,"",2,2,1,1,0,0,1,0,"",2,3,2,1,"",NA,NA,NA,"Het is goed om te weten dat ik informatie over de bananen kan opzoeken, zoals de herkomst en de (eerlijke) beloning voor de boeren.",47,2,2,1521
+"462",25184,1,2,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,3,3,1,"",NA,NA,NA,"Geen",84,3,1,6372
+"463",23768,1,2,0,0,0,1,0,"",1,2,1,0,0,0,0,0,"",2,2,2,1,"",NA,NA,NA,"waar ze vandaan komen, hoe gekweekt",61,3,1,3833
+"464",27342,1,1,1,0,0,0,0,"",2,1,1,0,0,0,0,0,"",1,4,1,1,"",NA,NA,NA,"land en informatie over de boeren waar ze vandaan komen",58,3,2,6521
+"465",28590,1,3,0,0,0,1,0,"",2,1,1,1,0,1,0,0,"",1,4,2,1,"",NA,NA,NA,"Of bananen werkelijk fair trade zijn zonder chemische bestrijdingsmiddelen.",75,3,2,6471
+"466",15070,1,5,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Ik ga er vanuit dat de boeren goed behandeld en betaald krijgen.. ook al zoek ik geen info op",38,2,2,8085
+"467",22627,1,2,0,0,0,1,0,"",2,2,0,1,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen",58,3,2,5283
+"468",8214,1,1,0,0,1,0,0,"",NA,NA,1,1,1,0,0,0,"",1,2,2,1,"",NA,NA,NA,"Geen",34,1,2,5751
+"469",20034,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,2,4,1,"",NA,NA,NA,"Geen",52,3,2,6576
+"470",20830,1,1,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,2,1,1,"",NA,NA,NA,"of ze fair trade zijn",55,3,2,6133
+"471",24208,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"geen, ik ga ervan uit dat de fairtrade zijn
+",58,3,1,4201
+"472",27528,1,10,0,0,1,0,0,"",NA,NA,0,1,0,0,0,0,"",2,4,2,1,"",NA,NA,NA,"Ik moet toe geven ik eet maar zelder een banan",81,3,1,5244
+"473",22460,1,1,0,0,0,1,0,"",3,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Of de boeren daadwerkelijk een goede prijs voor hun bananen krijgen",63,3,1,4708
+"474",20521,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Waar ze vandaan komen en of ze Fairtrade zijn nu we weten wat dit inhoudt 
+",66,3,2,5973
+"475",22327,1,1,0,1,0,0,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"zoek ik niet op",73,3,2,1444
+"476",20818,1,4,0,0,0,1,0,"",1,2,1,1,0,0,1,0,"",1,3,3,1,"",NA,NA,NA,"waar ze precies vandaan komen en hoeveel de boeren krijgen",63,3,1,3119
+"477",28937,1,8,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,4,4,1,"",NA,NA,NA,"Eventueel het land",75,3,1,2593
+"478",18921,1,3,1,1,0,1,0,"",2,2,0,1,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"Welke oorsprong , waar ze vandaan komen",47,2,2,3911
+"479",17829,1,2,0,1,0,0,0,"",2,2,1,1,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Niets",48,2,1,6901
+"480",23951,1,4,0,0,0,1,0,"",2,2,0,1,0,0,1,0,"",2,4,3,1,"",NA,NA,NA,"ik zou het niet weten,,heb me daar nog nooit in verdiept.",71,3,2,7241
+"481",27864,1,1,0,0,0,1,0,"",2,2,1,1,0,0,1,0,"",1,4,2,1,"",NA,NA,NA,"Geen informatie",71,3,2,1024
+"482",16237,1,4,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,2,2,1,"",NA,NA,NA,"Of ze van boeren komen die er een eerlijke prijs voor ontvangen",48,2,2,4825
+"483",27308,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,3,3,2,"3",2,2,2,"Geen",73,3,2,3134
+"484",22421,1,1,0,0,0,1,0,"",2,2,1,1,0,1,1,0,"",2,1,2,1,"",NA,NA,NA,"Herkomst en manier van telen",56,3,1,9404
+"485",20696,1,1,0,0,0,1,0,"",1,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Waar ze vandaan komen en produktie",68,3,1,1111
+"486",25977,1,2,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,1,2,1,"",NA,NA,NA,"WAAR DE BANANEN VANDAAN KOMEN",54,3,1,5061
+"487",22927,1,4,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Uit welk land ze afkomstig zijn",51,3,2,7631
+"488",25928,1,6,0,0,0,1,0,"",2,2,0,1,0,0,0,0,"",1,1,3,1,"",NA,NA,NA,"Geen",53,3,2,2743
+"489",23539,1,1,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,2,1,1,"",NA,NA,NA,"waar xe vandaan komen en of ze biologisch zijn",73,3,1,6343
+"490",22462,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen",68,3,1,7078
+"491",25105,1,2,0,1,0,1,0,"",2,2,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"geen",70,3,2,7091
+"492",23927,1,2,0,0,0,1,0,"",2,2,1,1,0,0,1,0,"",2,3,2,1,"",NA,NA,NA,"alles",67,3,2,5506
+"493",27744,1,4,0,0,0,1,0,"",3,2,1,1,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"geen",67,3,2,9735
+"494",16819,1,1,1,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,4,1,"",NA,NA,NA,"Geen",48,2,2,7948
+"495",28206,1,2,1,0,0,0,0,"",3,3,1,0,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Het land",63,3,2,5282
+"496",26173,1,1,1,1,0,1,0,"",1,1,1,0,0,0,0,0,"",2,3,4,1,"",NA,NA,NA,"geen",69,3,2,1335
+"497",20836,1,2,0,0,0,1,0,"",2,2,0,1,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Land, leefomstandigheden, groeiproces",52,3,2,8242
+"498",21987,1,2,0,0,0,1,0,"",2,2,1,1,0,0,1,0,"",1,4,2,1,"",NA,NA,NA,"Geen. Ik weet in de winkel of ze fairtrade of biologisch zijn en de rest is reclame.",53,3,2,3769
+"499",26595,1,1,1,0,0,0,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"geen",74,3,2,4711
+"500",22737,1,6,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,3,3,1,"",NA,NA,NA,"Geen",65,3,2,6221
+"501",14677,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,3,3,1,"",NA,NA,NA,"Houdbaarheid",43,2,1,2291
+"502",23664,1,2,0,1,0,1,0,"",3,2,1,1,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen",76,3,1,6269
+"503",23482,1,1,0,1,0,0,0,"",2,2,1,0,0,0,0,0,"",2,3,4,1,"",NA,NA,NA,"hoe lang blijven ze vers",58,3,1,5704
+"504",25737,1,1,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,1,3,1,"",NA,NA,NA,"Geen",76,3,1,6419
+"505",22497,1,1,0,1,0,1,0,"",2,2,1,1,0,0,0,0,"",2,3,2,1,"",NA,NA,NA,"Ik doe dit eigenlijk niet. Hoop wel dat dit een eerlijk product is. Eerlijk voor de bier, het milieu en de consument.",56,3,2,4564
+"506",24202,1,4,0,0,1,0,0,"",NA,NA,1,0,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"nee",76,3,1,8072
+"507",17565,1,4,0,0,0,1,0,"",2,2,1,1,1,0,0,0,"",2,3,4,1,"",NA,NA,NA,"waar komen ze vandaan,
+wat krijgt de boer ervoor
+hoe zijn de omstandigheden van de boer
+hoe is het vervoer
+welke verpakkingen worden gebruikt tijds transport",46,2,1,7548
+"508",16984,1,5,0,0,0,1,0,"",3,2,1,1,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Geen",42,2,2,7035
+"509",26255,1,2,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",2,3,3,1,"",NA,NA,NA,"Geen",57,3,1,8500
+"510",12238,1,2,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,4,3,1,"",NA,NA,NA,"Om eerlijk te zijn, niets.",49,2,1,8224
+"511",21045,1,10,0,0,0,1,0,"",2,2,1,0,0,0,0,0,"",1,1,3,1,"",NA,NA,NA,"geen",72,3,1,5141
+"512",13103,1,5,0,0,0,1,0,"",2,2,1,1,1,1,0,0,"",2,3,2,1,"",NA,NA,NA,"niets",42,2,2,7605
+"513",24553,1,4,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",2,4,3,1,"",NA,NA,NA,"Land van herkomst; economische situatie in dat land.",73,3,1,6271
+"514",26959,1,2,0,0,0,1,0,"",2,2,1,1,0,0,0,0,"",1,4,2,1,"",NA,NA,NA,"Niets",69,3,1,7103
+"515",27645,1,4,1,1,0,0,0,"",2,2,1,1,0,1,0,0,"",1,1,3,1,"",NA,NA,NA,"Geen",70,3,1,4501

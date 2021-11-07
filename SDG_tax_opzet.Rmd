@@ -1,0 +1,243 @@
+---
+title: "Opzet SDG and Tax"
+author: "Johannes W.H. van der Waal"
+date: "Augustus 2021"
+output:
+  pdf_document: default
+  html_document:
+    df_print: kable
+  word_document:
+    fig_caption: yes
+numbered_sections: yes
+bibliography: mybibfile.bib
+---
+
+```{r setup, include=FALSE, warnings = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)  
+list.of.packages <- c("readxl", "tidyverse", "curl", "httr", "reshape2", "broom", "caret", "lubridate", 
+                      "ggthemes", "formattable", "rpart", "rpart.plot", "vtable")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
+
+library(readxl)
+library(tidyverse)
+library(curl)
+library(httr)
+library(reshape2)
+library(broom)
+library(caret)
+library(readr)
+library(lubridate)
+library(ggthemes)
+library(formattable)
+library(vtable)
+options(knitr.table.format = "latex")
+```
+
+
+
+# Introduction
+
+- [@Lanis2015]: more CSR, less tax avoidance - tax avoidance is socially irresponsible. They view CSR as a legitimate business activity, not just cynically as a cost for profit-maximizing.They assume CSR is associated to disclosure, financial performance and earnings management. They use CSR performance metrics from KLD and effective tax rate (ETR) and tax disputes (as ETR is disputed). View of the firm: "real world entity" (Avi-Yonah, 2008), not just a nexus of contracts (agency theory).They use matched sample of tax avoidant and non-tax avoidant firms based on tax disputes. The KLD database has a tax dispute variable. Factset does not offer this metric, but perhaps it is possible to extract these from annual reports.
+
+[@Jones2017b] contrasts the Lanis study and does not find a relation between CSR and tax aggressiveness. They consider an international perspective, not only a US perspective as Lanis. Only Asia seems to show a relation between CSR performance and tax aggressiveness. 
+
+
+
+
+
+# Methods and materials
+
+## Dataset
+For the analysis of the effectiveness of CA in preventing crown rot, a data set of quality control data of organic bananas is used, collected in a commercial operation between 2016 and 2021. The data set describes identical shipments of containers with and without CA, of organic bananas, containing 1080 boxes each, sipped on various shipping lines, from the port of Paita in Peru to various European ports, notably Rotterdam, Antwerp, Hamburg and Vado. Of all the shipments, the date of packing, the date of discharge, the minimum and maximum grade of the fruit, as well as the arrival pulp temperature were recorded. All shipments wer subjected to a standardized quality survey protocol, in which 10 boxes were randomly sampled from each shipment of 1080 boxes. Crown rot incidence was scored at two levels counting the number of hands affected and dividing this by the number of hands present in the sample. Generally, a standard box of 18.14 kgs contains 20 hands.
+
+
+## Weather data
+To analyze the association between season and crown rot incidence, historic weather data from a public weather station close to the banana farms is  retrieved from the application programming interface (API) of meteostat. The weather station of Piura is reasonably close to the banana production area (about 55 km) and at the same altitude. To analyze the seasonal pattern, a temperature sum is computed (accumulated degree-days) defined as the total sum of average temperatures over 13.5 °C during a growing season of 10 weeks (between flowering and harvesting). Only temperature data is used, because precipitation is very low. The water requirements of bananas are met by irrigation. Besides, the literature indicates that rainfall or humidity do not play a significant role in crown rot development [@Lassois2010]. Figure \ref{graph2} shows the average daily temperature over the time period under consideration.
+
+```{r weather, include = FALSE}
+#create a function for reading weather from meteostat API:
+
+read_weather <- function(station){
+  url <- paste("https://bulk.meteostat.net/hourly/",station,".csv.gz", sep= "")
+  tempdir()
+  tmp <- tempfile()
+  curl_download(url, tmp)
+  download.file(url, destfile = paste(station, ".wd", sep=""))
+}
+
+#define weather station of choice: 84401
+station <- 84401
+
+#read the weather from meteostat:84401
+read_weather(station) #this function downloads the data in compressed form
+
+#collect the data structure of weather report 
+names <- read.csv("weather-structure.csv", header=FALSE, sep=";")
+vars <- unlist(names$V2)
+type <-unlist(names$V3)
+
+weather <- read.csv(paste(station, ".wd", sep = "")) 
+#read and decompress the weather file
+names(weather) <- vars # attach understandable variable names to the columns
+
+# select the variables to be used and mutate some new variables
+
+W_PE <- weather %>% dplyr::select(date, temp) %>%
+  mutate(date = as.Date(date))
+
+summary(W_PE)
+```
+
+
+```{r graph2, echo=FALSE, fig.cap="A plot of the mean temperatures per date for Piura, Peru", out.width = "80%", fig.align = "center"}
+# make a dataframe with mean temperature per day
+summ_PE <- W_PE %>% 
+  group_by(date) %>%
+  summarise(mean_temp = mean(temp, na.rm = TRUE)) # 
+
+# make a graph of mean temperature against date
+summ_PE %>% filter(date > "2016-01-01") %>%
+  ggplot(aes(date, mean_temp)) +
+  geom_line() +
+  ggtitle(label  = "Average daily temperature Piura") +
+  ylab('Temperature °C')+ xlab('date') +
+  theme(text = element_text(size=8),
+        axis.text.x = element_text(angle=0, hjust=1)) +
+  theme_few()
+```
+```{r degreedays, echo = FALSE, include = FALSE}
+#formula to calculate the cumulative sums based on span and cut-off of 13.5°C
+span <- 10
+summ_add_PE <- summ_PE %>% filter(date >=  (as.Date("2016-01-01")-span*7) 
+                                  & date <= "2021-04-20") %>% 
+  mutate(grow_temp = (mean_temp - 13.5), cdd = cumsum(grow_temp)) %>% 
+  #the grow temperature is the temperature above 13.5°C under which temperature 
+  #bananas do not grow but die
+  mutate(add = round(cdd - lag(cdd, span*7)),2) %>% 
+  # the accumulated degree.days or temperature sum is calculated for every day 
+  #from the cumulative grow_temp
+  na.exclude() #exclude rows with NaN
+```
+
+```{r join, echo = FALSE, include = FALSE}
+# join the quality data to the weather data to have a list of quality data with
+#ADDs for every shipment.
+data_PE <- data %>% left_join(summ_add_PE, by = c('pd' = 'date')) 
+
+data_reg <- data_PE %>% mutate(ca = as.factor(ca),
+                               C_cnt = as.integer(round((CR+2*CRC)*10*20),0), 
+                               CR_cnt = as.integer(round(CR*10*20),0),
+                               CRC_cnt = as.integer(round(CRC*10*20),0),
+                               week = isoweek(pd), 
+                               season = as.factor(ifelse(week %in% c(8:22),1,0)),
+                               avggrade = (mingrade+maxgrade)/2,
+                               ADD = add/100)
+```
+
+## Statistical analysis
+For all descriptive and regression analyses the statistical package R was used. Missing data and occasional outliers have been removed from the data set, so that `r nrow(data)` observations remain. The Pearson correlation table shows that there are significant correlations between crown rot percentage and ADD, transit time and use of CA, but that these are generally weak (<0.5).Table 1 shows the descriptive statistics of the dependent and independent variables.
+
+```{r sum_stats, echo=FALSE, include = FALSE}
+data_reg %>% dplyr::select(CR, CRC, CR_cnt, CRC_cnt, add, ca, days, maxtemp, avggrade) %>% sumtable()
+```
+
+The distribution of the crown rot variables CR and CRC are not normally distributed, as the summary statistics table shows. More than 75% of the observations have 0 crown rot. This makes a simple linear regression model less suitable for the analysis. In fact, the crown rot percentage is a count, as it is measured by counting the incidence of affected hands. Therefore, a standardized crown rot count can be calculated back from the weighted crown rot variable, using a standardized 200 hands (10 boxes each having 20 hands) as the basis. The resulting variables can be used as the dependent variable in a zero-inflated negative binomial regression. Zero inflation is chosen, because a large number of zeros in the count can be explained by shipments  outside the season. A season variable is constructed to indicate if a shipment is outside the high-risk season of week 8-22. To make the regression easier to interpret, the accumulated degree days are divided by 100, so that the influence of 100 degree.days is shown. Likewise, the average grade is used. Because of the overdispersion of zeros in the sample, a generalized hurdle count data regression model is chosen. This consists in fact of two models: one negative binomial count model for positive counts, and a logistic regression model for the zeros [@zeileis2008regression]. Exponentiating the coefficient estimate gives the relative risk. 
+
+
+# Results and discussion
+
+## Seasonal pattern
+
+Figure \@ref(fig:graph1) shows the average weighted incidence of crown rot per month, broken down for CA and non-CA shipments.The graph clearly shows the temporal pattern hinting at a relation to the weather. 
+
+```{r graph1, echo=FALSE, fig.cap='Boxplot of crown rot incidence per month', out.width = "90%", fig.align = "center"}
+#make a plot of average CR incidence per despatch month
+data <- data %>% mutate(dd = as.Date(dd), ca = as.factor(ca), pd = as.Date(pd), C= CR+2*CRC) 
+data %>% mutate(month = strftime(pd, format = "%m")) %>% 
+  ggplot(aes(month, C*100, col = ca)) +
+  geom_boxplot() +
+    scale_x_discrete(name = "month") +
+    scale_y_continuous(name = "average weighted incidence of crown rot %") +
+    theme(axis.title.y = element_text(color = "grey"),
+          axis.title.y.right = element_text(color = "blue")) +
+    theme_few()
+```
+Rather than using the average daily temperatures, temperature sums are used to relate the physiological state of the fruit to the weather. The temperature sum is expressed as accumulated degree.days (ADD). In the case of bananas, the floor temperature is 13.5 °C. This is the temperature below which the banana plant does not grow. Not accidentally, it is also the temperature at which bananas are carried in refrigerated containers. At this temperature, the plant metabolism is reduced to the minimum. Below this temperature, the plant will die, viz. the bananas will be damaged by cold shock [@Chillet2006, @Ganry1975]. ADD is also a parameter that can be used to determine when a crop is harvest-ready.  In the banana industry in Peru, this is not done in this way, especially because the water supply by irrigation is a limiting factor to growth. Normally, bananas are harvested 10-12 weeks after flowering. For that reason, the ADD is calculated for a set time span of 10 weeks for every single pack date.   
+
+Figure \@ref(fig:add_plot) is an overlay of a line plot showing the temperature sum and a scatter plot showing the crown rot incidence of individual shipment. Though the height of the crown rot peaks differ per year, there seems to be a clear positive association of crown rot and increasing temperature sums. It appears that the rising temperature sums increases the fruit age and affects the physiological component of crown susceptibility. Nevertheless, the fruit is not harvested earlier, e.g. at 900 degree.days, because it has not yet attained the required grade (girth). A possible explanation is that the growth of the fruit is limited by the irrigation capacity in the area. Irrigation water is rationed and every farmer receives water during half a day every 15 days. With higher temperatures and higher evapotranspiration, this could stress the fruit, leading to higher susceptibility for crown rot.
+
+```{r add_plot, echo=FALSE, fig.cap="Accumulated degree days and crown rot.", out.width = "100%", fig.align = "center"}
+# make an overlay plot of ADD  and crown rot
+ggplot() + 
+  geom_line(data=summ_add_PE, aes(x=date, y=add), color='blue') + 
+  geom_point(data=data_PE, aes(x=pd, y=(CR+CRC)*2000, col=ca),  alpha = 0.5, size=1)+
+  scale_x_date(name = "date", labels = date, date_breaks = "year") +
+  scale_y_continuous(name = "temperature sum °C.day", 
+                     sec.axis = sec_axis(~./100, name = "crown rot", 
+                          labels = function(b) { paste0(round(b, 0), "%")})) +  
+  theme(axis.title.y = element_text(color = "grey"),
+        axis.title.y.right = element_text(color = "grey"), size =2) +
+  theme_few()
+```
+
+## The effect of CA 
+
+Figures \@ref(fig:graph1) and \@ref(fig:add_plot) suggest that CA has a mitigating effect on crown rot development. Whether or not this is a statistically significant effect will be analyzed by applying a regression analysis. Before proceeding, the following Figure \@ref(fig:cormat) shows the Pearson correlations between the variables. It shows significant, but relatively weak (<0.5) correlations. 
+
+```{r cormat, echo = FALSE, include = FALSE}
+#explore correlation between variables
+
+pw <- data_reg %>% dplyr::select(CR, CRC, add, days, ca) %>% 
+  mutate(CA = as.numeric(ca)) %>% 
+  dplyr::select(-ca) %>% drop_na() %>% 
+  as.matrix() %>% cor() 
+upper.tri(pw, diag = FALSE)
+
+upper<-pw
+upper[upper.tri(pw)]<-""
+upper<-as.data.frame(upper)
+upper
+```
+```{r pwcor, echo=FALSE, include=TRUE}
+library(xtable)
+print(xtable(upper), type="latex")
+
+
+```
+
+
+```{r season, echo = FALSE, include = FALSE}
+
+library(pscl)  
+m11a <- hurdle(CR_cnt ~ ADD + ca + days + avggrade + maxtemp | season,
+                data = data_reg, dist = "negbin", link = "logit", 
+              zero.dist = "binomial")
+   
+     
+m11b <- hurdle(CRC_cnt ~ ADD + ca + days + avggrade + maxtemp  | season,
+               data = data_reg, dist = "negbin", 
+               zero.dist = "binomial")
+
+```
+
+```{r results='asis', echo=TRUE, include=TRUE}
+library(texreg)
+
+screenreg(list(m11a, m11b))
+```
+The regression models perform well in predicting the CR and CRC counts, with ADD, ca, transit time days and maximum pulp temperature giving positive and significant parameter estimates, while the season is significant in predicting excessive zero counts.
+Mild and severe crown rot (CR and CRC, respectively) both seem to be positively associated to physiological fruit age. The accumulated degree days variable ADD (add/100) has a positive parameter, while the average grade,  another indicator of fruit age, is not significantly associated. This is logical, because the fruit grade is controlled by the selection process in the field to fall between 37 and 48. The risk rations for ADD are 1.40 and 1.51 respectively, indicating that for every 100 accumulated degree.days increase, the risk of crown rot increase by that factor. The model confirms the H1 hypothesis. 
+
+The use of CA containers is also strongly associated to the crown rot risk. Using a non-CA container, increases the risk of crown rot by a factor of 1.66 for mild and of 1.99 for severe crown rot. This confirms hypothesis H2. The effect of CA could possible be stronger, as it was discovered during the research that containers that are booked as CA are not in all cases arriving with properly functioning CA capability. In some cases, CA containers inadvertently have operated as non-CA containers. 
+
+Finally, the transit time and the pulp temperature (on arrival) are positively associated. An increase of the transit time of one day increases the risk of mild crown rot by a factor of 1.05, and of severe crown  rot by a factor of 1.02. However, the parameter is only moderately significant. The maximum pulp temperature measured on arrival is associated positively, by a factor of 1.58 or 1.52 respectively, for every degree increase in pulp temperature, confirming hypothesis H3. However, both variables are not fully independent. A non-optimally functioning container may indeed promote the progression of crown rot on susceptible fruit, but fruit affected by crown rot may also offset slow fruit ripening and increase respiration and hence produce heat, which is not always well evacuated from the  pallets at the door, where the temperature readings are taken.
+
+# Conclusion
+Controlled atmosphere containers can effectively reduce the incidence of crown rot in organic bananas during sea transport from Peru to the European destinations. The susceptibility of organic bananas to crown rot seems to be associated to the physiological age of the fruit as expressed by the accumulated degree.days. Earlier harvest of the fruit during the hottest time of the year seems advisable to reduce the physiological fruit age and hence crown rot susceptibility. However, the experience shows that the fruit does not attain the required grade in that case, which might be caused by  growth rate limiting irrigation water supply or other limiting factors. This could be an area for future research.
+This study is limited to organic bananas from Peru. Future research could be extended to other organic banana growing countries with different climate patterns. Another limitation is that the data is collected from an industrial process. This limited the flexibility of the research design, while giving the advantage of being able to use a large data collection. 
+
+# References
+
+

@@ -107,3 +107,6 @@ stoxx_Large %>% filter(ctrygrp =="JKT") %>% summarize(mean(mcap)) %>% pull()
 JKT_sample %>% summarize(mean(mcap)) %>% pull()
 data_matched %>% summarize(mean(mcap)) %>% pull()
 
+#save the data set to csv
+write.csv(data_matched, "sample.csv")
+

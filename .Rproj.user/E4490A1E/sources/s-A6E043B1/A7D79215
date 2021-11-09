@@ -3,9 +3,9 @@
     "path": "C:/Users/HW van der Waal/projects/SDG_tax/stoxx3000_analysis.R",
     "project_path": "stoxx3000_analysis.R",
     "type": "r_source",
-    "hash": "999601069",
+    "hash": "0",
     "contents": "",
-    "dirty": false,
+    "dirty": true,
     "created": 1635696522476.0,
     "source_on_save": false,
     "relative_order": 1,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "107,0",
-        "scrollLine": "79"
+        "cursorPosition": "110,37",
+        "scrollLine": "82"
     },
     "folds": "",
     "lastKnownWriteTime": 1636315719,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1636315719732,
+    "last_content_update": 1636400980153,
     "read_only": false,
     "read_only_alternatives": []
 }

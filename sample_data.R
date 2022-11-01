@@ -1,4 +1,4 @@
-#dit bestand analyseert de Stoxx3000 
+#dit bestand produceert 3 x 100 gematchte bedrijven.
 
 #inlezen bibliotheken
 
@@ -7,23 +7,11 @@ library(tidyverse)
 library(fuzzyjoin)
 
 #inlezen Stoxx 3000 data
-stoxx3000 <- stoxx3000 <- read_delim("stoxx3000.csv", 
+stoxx3000 <- stoxx3000 <- read_delim("Stoxx_large.csv", 
                                      ";", escape_double = FALSE, trim_ws = TRUE)%>% 
   select(-1)
-colnames(stoxx3000)[9] <- "mcap"
+colnames(stoxx3000)[5] <- "mcap"
 
-
-#verdeling van bedrijven over categorieën
-
-stoxx3000 %>% filter(Component == "Large") %>%
-  group_by(Country) %>%
-  summarize(country= Country, n = n()) %>% 
-  filter(n>5) %>%
-  ggplot(aes(x = reorder(country, -n), y = n)) + geom_col()
-
-large <- stoxx3000 %>% filter(Component == "Large") %>%
-  group_by(Country) %>%
-  summarize(n = n())
 stoxx <- stoxx3000 %>% mutate(., ctrygrp = with(., case_when(
   (Country == "US") ~ "USA",
   (Country %in% c("SE", "DE", "FR", "CH", "NL", "BE", "DK", "ES", "IT")) ~ 'EUR',
@@ -34,9 +22,12 @@ stoxx %>% filter(Component == "Large") %>%
   group_by(ctrygrp) %>%
   summarize(n = n())
 
+stoxx$ctrygrp <- as.factor(stoxx$ctrygrp)
+stoxx$Factset_sector <- as.factor(stoxx$Factset_sector)
+stoxx[,8:27] <- sapply(stoxx[,8:27], as.numeric)
+
 stoxx_Large <- stoxx %>% filter(Component == "Large") 
 
-stoxx$ctrygrp <- as.factor(stoxx$ctrygrp)
 #Propensity score matching
 if(!require(MatchIt)){
   install.packages("MatchIt")
@@ -53,12 +44,12 @@ JKT_sample <- sample_n(stoxx_JKT, 100)
 stoxx_USA <- stoxx %>% filter(Component == "Large" & ctrygrp == "USA")
 stoxx_USA_JKT <- bind_rows(JKT_sample, stoxx_USA) %>%  #retains only USA
   mutate(treat = ifelse(ctrygrp == "JKT", 1 ,0)) 
-  
-  
+
+
 
 # No matching; constructing a pre-match matchit object
-m.out0_USA <- matchit(treat ~ mcap, data = stoxx_USA_JKT,
-                  method = NULL, distance = "glm")
+m.out0_USA <- matchit(treat ~ mcap + Factset_sector, data = stoxx_USA_JKT,
+                      method = NULL, distance = "glm")
 
 
 # Checking balance prior to matching
@@ -66,7 +57,7 @@ summary(m.out0_USA)
 
 #create a matched dataset of USA on JKT (as the smallest subset)
 set.seed(1234, sample.kind = "Rounding")
-match.it.USA <- matchit(treat ~ mcap, data = stoxx_USA_JKT, method="nearest", ratio=1)
+match.it.USA <- matchit(treat ~ mcap + Factset_sector, data = stoxx_USA_JKT, method="nearest", ratio=1)
 a <- summary(match.it.USA)
 a
 
@@ -80,7 +71,7 @@ stoxx_EUR_JKT <- bind_rows(JKT_sample, stoxx_EUR) %>%  #retains only EUR
 
 
 # No matching; constructing a pre-match matchit object
-m.out0_EUR <- matchit(treat ~ mcap, data = stoxx_EUR_JKT,
+m.out0_EUR <- matchit(treat ~ mcap + Factset_sector, data = stoxx_EUR_JKT,
                       method = NULL, distance = "glm")
 
 
@@ -88,7 +79,7 @@ m.out0_EUR <- matchit(treat ~ mcap, data = stoxx_EUR_JKT,
 summary(m.out0_EUR)
 
 set.seed(1234, sample.kind = "Rounding")
-match.it.EUR <- matchit(treat ~ mcap, data = stoxx_EUR_JKT, method="nearest", ratio=1)
+match.it.EUR <- matchit(treat ~ mcap + Factset_sector, data = stoxx_EUR_JKT, method="nearest", ratio=1)
 a <- summary(match.it.EUR)
 a
 

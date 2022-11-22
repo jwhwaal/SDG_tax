@@ -17,6 +17,6 @@ tr <- tr %>%
 longlist <- longlist %>% left_join(., tr, by = c("year" = "year", "Country" = "iso_2"))
 longlist <- longlist %>%
   mutate(str = rate/100) %>%
-  seelct(-rate)
+  select(-rate)
 
 write.csv(longlist, "longlist.csv")

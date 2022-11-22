@@ -1,284 +1,380 @@
 library(readr)
 library(tidyverse)
 library(readxl)
+
+
+# DATA LOADING AND WRANGLING
+#read the master financial data of the sample from the Factset Excel-sheet
+
 data <- read_excel("sample_report.xlsx", 
                                     sheet = "sample_long") %>%
   filter(Year %in% c(2016, 2020))
 
+#import statutory tax rates from Tax Foundation.org
+taxrates_81_21 <- read_excel("taxrates_81_21.xlsx")
+tr <- taxrates_81_21 %>% filter(iso_2 %in% unique(data$Country) & year %in% c(2016:2020)) %>%
+  mutate(stat_rate=as.numeric(rate)) %>%
+  select(iso_2, country, year, stat_rate)
+unique(data$Country)
 
-# import statutory tax rates from Tax Foundation.org
-#taxrates_81_21 <- read_excel("taxrates_81_21.xlsx")
-#tr <- taxrates_81_21 %>% filter(iso_2 %in% unique(data$Country) & year %in% c(2016:2020)) %>%
-#  mutate(stat_rate=as.numeric(rate)) %>%
-#  select(iso_2, country, year, stat_rate)
-#unique(data$Country)
-
-# import Cetr_5_scaled file
-library(readr)
+# import Cetr_5_scaled file calculated separately.
 longlist_3 <- read_delim("longlist_3.csv", 
-                         ";", escape_double = FALSE, trim_ws = TRUE) %>%
-  filter(year %in% c(2016, 2020))
+                         ";", escape_double = FALSE, 
+                         col_types = cols(str = col_number(), 
+                         PTI = col_number(), CTP = col_number(), 
+                         cetr_5 = col_number(), diff = col_number(), 
+                         cetr_5_s = col_number()), trim_ws = TRUE,
+                         na =c("#N/B")) %>%
+                         filter(year %in% c(2016, 2020))
 
+#join the cetr_5_scaled data and the country/year statutory tax rates on the Factset data and 
 data1 <- data %>% left_join(.,longlist_3, by = c("Year" = "year", "ISIN" = "ISIN", "Country" = "Country" )) %>%
-  select(ISIN, Sector, Year, LTD, RD, PTI_FOREIGN, PTI, CTP, cetr_5, cetr_5_s, ASSETS, Country) %>%
-  mutate(LTD = as.numeric(LTD), RD = as.numeric(RD), PTI_FOREIGN = as.numeric(PTI_FOREIGN))
-data1 
+  select(ISIN, Sector, Year, LTD, RD, PTI_FOREIGN, PTI, CTP, cetr_5, cetr_5_s, ASSETS, Country, ROA, MCAP) %>%
+  mutate(LTD = as.numeric(LTD), RD = as.numeric(RD), PTI_FOREIGN = as.numeric(PTI_FOREIGN)) %>%
+  left_join(.,tr, by = c("Country" = "iso_2", "Year" = "year")) %>%
+  mutate(across(PTI:cetr_5_s, as.numeric))
 
 
-#create new variables
-data2 <- data1 %>% mutate(LEV = LTD/ASSETS,
-                      RDS = RD/ASSETS,
+#logit conversion function to be used with "SHELTER", Wilson 2009. Is een logistic,
+logit2prob = function(logit){
+  odds <- exp(logit)
+  prob <- odds / (1 + odds)
+  return(prob)
+}
+
+
+#create new variables. TAP = Tax aggressiveness probability
+data2 <- data1 %>% mutate(
+                      LEV = LTD/ASSETS,
+                      RDS = RD/ASSETS, #R&D expenses scaled by assets
                       SIZE = log(ASSETS),
                       FOREIGN = case_when(
-                        PTI_FOREIGN > 1 ~ 1,
+                      PTI_FOREIGN > 1 ~ 1, #foreign pre-tax income
                         is.na(PTI_FOREIGN)  ~ 0,
-                        TRUE ~ 0))
-# SHELTER = -4.30 + 6.63*BTD -1.72*LEV + 0.66*SIZE + 2.26*ROA + 1.62*FOREIGN + 1.56*RDS)
+                        TRUE ~ 0),
+                      BTD = (PTI*stat_rate*0.01-CTP)/ASSETS, #book-tax difference
+                      SHELTER = -4.30 + 6.63*BTD -1.72*LEV + 
+  0.66*SIZE + 2.26*ROA + 1.62*FOREIGN + 1.56*RDS, #Wilson's Tax Shelter Probability
+  TAP = as.factor(round(logit2prob(SHELTER),0))
+  )
+is.na(data2$TAP)
 
+# Load the SDG scores per SDG e.o. per ISIN from NLP-test
 load("C:/Users/HW van der Waal/projects/NLP-test/outdata.Rdata")
-View(outdata)
-summary(data2$CETR_scaled)
 
-out <- outdata %>% select(company, year, sdg01:sdg, doc_id)
-df <- data2 %>% left_join(.,out, by = c("ISIN" = "company", "Year"= "year"))
-write.csv(df, "df_table.txt")
 
-#calculate Cash Effective Tax Rates en Henry-Sansing measures
-# The H&S measure, indicated as ∆, is defined as the difference between cash taxes paid, 
-# adjusted for tax refunds receivable, and the product of its pre-tax book income 
-# and the statutory tax rate. 
-# The ∆ is then scaled by the market value of the firm assets to make the measure comparable across firms of different sectors. The market value of assets is the book value of assets plus the difference between market value of equity minus the book value of equity (Henry & Sansing, 2018). 
+#Sum the  SDG-scores of companies with more than 1 document, so that every company has only one entry.
+#create a dummy for report (==1) so that companies with report are marked, 
+#before being joined to companies without report.
 
-#The market value of assets is the book value of assets plus the difference 
-#between market value of equity minus the book value of equity 
+out_temp <- outdata %>%
+  mutate(report = ifelse(is.na(doc_id), 0, 1)) %>%
+  group_by(company, year) %>%
+  summarize(sdg01 = sum(sdg01),
+            sdg02 = sum(sdg02),
+            sdg03 = sum(sdg03),
+            sdg04 = sum(sdg04),
+            sdg05 = sum(sdg05),
+            sdg06 = sum(sdg06),
+            sdg07 = sum(sdg07),
+            sdg08 = sum(sdg08),
+            sdg09 = sum(sdg09),
+            sdg10 = sum(sdg10),
+            sdg11 = sum(sdg11),
+            sdg12 = sum(sdg12),
+            sdg13 = sum(sdg13),
+            sdg14 = sum(sdg14),
+            sdg15 = sum(sdg15),
+            sdg16 = sum(sdg16),
+            sdg17 = sum(sgd17),
+            sdg = sum(sdg),
+            gc = sum(gc),
+            gri = sum(gri),
+            int = sum(int), 
+            report = sum(report))
+#join the resulting scores data frame on to the data2.
 
-unique(df$country)
-table(df$country, df$ctrygrp)
-which(df$ctrygrp=="EUR")
+out_temp %>% group_by(company, year)  %>% summarize(n = n()) %>% arrange(desc(n))
 
-#create country groups based on country
+
+
+length(unique(out_temp$company))
+length()
+df <- data2 %>% left_join(.,out_temp, by = c("ISIN" = "company", "Year"= "year"))
+
+#create country groups based on country,# the last line of code replaces all NAs with zero
 
 df <- df %>% mutate(., ctrygrp = with(., case_when(
   (Country %in% c("US", "JE")) ~ "USA",
   (Country %in% c("SE", "DE", "FR", "CH", "NL", "BE", "DK", "ES", "IT", "FI")) ~ 'EUR',
   (Country %in% c("KR", "JP", "TW")) ~ 'JKT',
   (TRUE ~ "OTH")
-))) 
+)),
+mutate(., across(sdg01:int, ~ifelse(is.na(.x),0,.x)))) %>%
+  mutate(report = ifelse(is.na(report),0, 1))
+# and write the final data frame disk for future reference
+write.csv(df, "df_table.txt")
 
-unique(df$ctrygrp)
 
-# create report dummy variable - if no document, no report.
-df <- df %>% mutate(report = as.factor(ifelse(is.na(doc_id), 0,1)))
+# ANALYSIS
+# Create new proxies for Tax Aggressiveness.
+
+#The market value of assets is the book value of assets plus the difference 
+#between market value of equity minus the book value of equity 
+
+# create a report and SDG dummy variable - if no document-id, then there was no report.
+# No SDG mentioning, SDG is 0, else 1
+
+df <- df %>% 
+   mutate(
+    SDG = as.factor(case_when(
+      sdg > 0 ~ 1,
+      is.na(sdg)  ~ 0,
+      TRUE ~ 0)),
+    report = as.factor(case_when(
+      report > 0 ~ 1,
+      is.na(report)  ~ 0,
+      TRUE ~ 0)),
+    GC = as.factor(ifelse(gc > 0, 1, 0)),
+    GRI = as.factor(ifelse(gri > 0, 1, 0)),
+    INT = as.factor(ifelse(int> 0, 1, 0))
+    )
+
+# convert the factors to descriptive level names
+      
+df$SDG <- recode(df$SDG, "1" = "SDG", "0" = "noSDG")
+df$report <- recode(df$report, "1" = "report", "0" = "no report")
+df$TAP <- recode(df$TAP, "1" = "Tax Aggressive", "0" = "Not Tax Aggressive")
+
+#check how many different companies there are. It should be 300
+length(unique(df$ISIN))
+
+# Make a summary statistics table
+library(vtable)
+var.labs <- data.frame(var = c("SIZE", "PTI_FOREIGN",
+                               "PTI", "CTP","ROA", "cetr_5", "cetr_5_s", 
+                                  "stat_rate",
+                               "LEV", "BTD",
+                               "TAP",  "report", "SDG"),
+                       labels = c("Size (log(Assets))", 
+                                  "Foreign Pre-tax Income", "Pre-tax Income", 
+                                  "Cash Taxes Paid", "Return on Assets %",
+                                  "5-year CETR", "scaled 5-year CETR",
+                                  "Statutory Tax Rate", 
+                                  "Leverage%",  
+                                  "Book-Tax Difference/Assets",
+                                  "Tax Aggressiveness Prob.",
+                                  "SR/IR report dummy", "SDG mention. dummy"
+                  ))
 
 
-df %>% filter(is.na(doc_id))
-df <- df %>%
-  mutate(across(PTI:cetr_5_s, as.numeric))
+df %>%  sumtable(., vars = var.labs$var, labels = var.labs)
 
-#make a boxplot of cash tax paid
+#GET TO KNOW THE DATA BY MAKING GRAPHS
+# CETR_5_S versus reporting characteristics
+
+#make a boxplot of cash tax paid versus report/integrated report/GC-membership
 df %>% 
-  ggplot(aes(report, as.numeric(CTP))) +
+  ggplot(aes(report, CTP)) +
   geom_boxplot()
-
-#make a boxplot of  Cash ETR_5 >0
+#H1 tax versus SR/IR
+#make a boxplot of  Cash ETR_5 >0;  winsorize data 
 df %>% filter(Year %in% c(2016,2020) & cetr_5 >0 & cetr_5 <1) %>%
-  ggplot(., aes(x=report, y=as.numeric(cetr_5), col = ctrygrp)) +
-  geom_boxplot() +
-  facet_grid(. ~ Year)
-
-#make a boxplot of scaled Cash ETR
-df %>% filter(cetr_5_s < 2.5 & cetr_5_s > -2.5) %>%
   ggplot(., aes(x=report, y=cetr_5_s, col = ctrygrp)) +
   geom_boxplot() +
   facet_grid(. ~ Year)
 
+df %>% filter(Year %in% c(2016,2020) & cetr_5 >0 & cetr_5 <0.5) %>%
+  ggplot(., aes(x=INT, y=cetr_5_s, col = ctrygrp)) +
+  geom_boxplot() +
+  facet_grid(. ~ Year)
+
+df %>% filter(Year %in% c(2016,2020) & cetr_5 >0 & cetr_5 <0.5) %>%
+  ggplot(., aes(x=GC, y=cetr_5_s, col = ctrygrp)) +
+  geom_boxplot() +
+  facet_grid(. ~ Year)
 
 
+#H2 make boxplots of CETR_5_S versus SDG mentioning
+#make a boxplot of scaled Cash ETR
+df %>% filter(cetr_5 < 0.5 & cetr_5 > 0) %>%
+  ggplot(., aes(x=SDG, y=cetr_5_s)) +
+  geom_boxplot() +
+  facet_grid(ctrygrp ~ Year)
 
-#make a boxplot of  BTD
-df %>% filter(Year %in% c(2016,2020) & CETR_5 >0 & CETR_5 < 1) %>%
-  ggplot(., aes(x=report, y=CETR_5, col = ctrygrp)) +
-  geom_boxplot()
-
-#make a boxplot of  SHELTER
-df %>% filter(Year %in% c(2016,2020) & CETR_5 >0) %>%
-  ggplot(., aes(x=report, y=log(SHELTER), col = ctrygrp)) +
-  geom_boxplot()
+df %>% filter(cetr_5_s < 0.25 & cetr_5_s > -0.25) %>%
+  ggplot(., aes(x=log(sdg+1), y=cetr_5_s, col = ctrygrp)) +
+  geom_point() +
+  geom_smooth(method=lm, se=TRUE, fullrange=TRUE,aes(group=ctrygrp))
 
 
+df %>% filter(cetr_5_s < 0.25 & cetr_5_s > -0.25) %>%
+  ggplot(., aes(x=ctrygrp, y=cetr_5_s)) +
+  geom_boxplot() +
+  facet_grid(. ~ Year)
 
-#make a boxplot of pre_tax income
-df %>% filter(Year %in% c(2016,2020)) %>%
-  ggplot(., aes(x=report, y=PTI, col = ctrygrp)) +
-  geom_boxplot()
-
+df %>% filter(cetr_5_s < 0.25 & cetr_5_s > -0.25) %>%
+  pivot_longer(cols = sdg01:sdg17, names_to = "Goal", values_to = "score") %>%
+  filter(Year ==2020) %>%
+  ggplot(., aes(x=log(score+1), y=cetr_5_s, col = ctrygrp)) +
+  geom_point(alpha = 0.5) +
+  facet_wrap(. ~ Goal)
 
 #Unpaired Wilcoxon 
-# Subset weight data before treatment
-report <- subset(df,  report == 1, cetr_5_s,
+# Subset  data before treatment
+report <- subset(df,  report == "report", cetr_5_s,
                  drop = TRUE)
-# subset weight data after treatment
-noreport <- subset(df,  report == 0, cetr_5_s,
+# subset  data after treatment
+noreport <- subset(df,  report == "no report", select = cetr_5_s,
                 drop = TRUE)
 wilcox.test(report, noreport, alternative = "greater")
 
 
 #Unpaired Wilcoxon 
-# Subset weight data before treatment
-report1 <- subset(df,  report == 1, CASH_TAX_PAID,
+# Subset  data before treatment
+
+report1 <- subset(df,  report == "report", CTP,
                  drop = TRUE)
-# subset weight data after treatment
-noreport1 <- subset(df,  report == 0, CASH_TAX_PAID,
+# subset  data after treatment
+noreport1 <- subset(df,  report == "no report", CTP,
                    drop = TRUE)
-wilcox.test(report1, noreport1, alternative = "less")
+wilcox.test(report1, noreport1, alternative = "greater")
 
-data3 <- df %>%
- mutate(sdg = ifelse(is.na(sdg), 0, sdg)) 
+#PERFORM SOME REGRESSION ANALYSES
 
-data3 %>% filter(cetr_5 <1 & cetr_5 > -1) %>%
-  ggplot(., aes(x=cetr_5, y=sdg, col = ctrygrp)) +
-  geom_point() +
-  facet_grid(. ~ Year)
- 
-
-r1 <- lm(data3, formula = cetr_5_s ~ sdg07 + sdg13 + sdg16 + ctrygrp)
-summary(r1)
-
-r2 <- glm(report ~ cetr_5_s + RDS + SIZE + LEV + ctrygrp, family = binomial, data = data3)
-summary(r2)
-
-summary(data3$BTD)
-
-r3 <- lm(cetr_5_s ~ log(sdg01+1) + log(sdg02+1) + log(sdg03+1) + log(sdg04+1) + log(sdg05+1) + log(sdg06+1) + log(sdg07+1) + log(sdg08+1) + 
-           +log(sdg09+1) + log(sdg10+1) + log(sdg11+1) + log(sdg12+1) + log(sdg13+1) + log(sdg14+1) + log(sdg15+1) + log(sdg16+1) + RDS  + SIZE + LEV +
-            FOREIGN + Sector + ctrygrp, data = data3)
-summary(r3)
-
+#some regressions
 
 # fit some PLM models on BTD
 library(plm)
+#check if df is balanced
+df %>% is.pbalanced(index =c("Year", "ISIN"))
+#pdata <- unique(df, by = c("Year", "ISIN"))
 
-fixed1 <- plm(CETR_5 ~ sdg03 + sdg07 +sdg13 , data=data3, index=c("Year"), model="within")
-summary(fixed1)
+#truncate data for cetr_5 > 0 and cetr_5 <0.5 (as is customary in other)
+df_t <- df %>% filter(cetr_5 > 0 & cetr_5 < 0.5)
+# check if data set is balanced
+df_t %>% is.pbalanced(index =c("Year", "ISIN"))
+#if required, balance truncated data
+df_t_b <- df_t %>% make.pbalanced(index =c("Year", "ISIN"), balance.type = "shared.times")
+duplicated(df_t)
 
- data4 <- data3 %>% filter(as.integer(report)==1) %>% mutate(SDG = log(sdg03 + sdg08 + sdg13 + sdg16 +1))
-
-
-fixed3 <- plm(CETR_scaled ~ log(sdg+1) + RDS + SIZE + LEV + 
-                FOREIGN + ctrygrp, data=data3, index=c("Year"), model="within")
-summary(fixed3)
-
-fixed4 <- plm(cetr_5 ~ log(sdg01+1) + log(sdg02+1) + log(sdg03+1) + log(sdg04+1) + log(sdg05+1) + log(sdg06+1) + log(sdg07+1) + log(sdg08+1) + 
-                +log(sdg09+1) + log(sdg10+1) + log(sdg11+1) + log(sdg12+1) + log(sdg13+1) + log(sdg14+1) + log(sdg15+1) + log(sdg16+1) + RDS + SIZE + LEV + 
-                FOREIGN + ctrygrp + Sector, data=data3, index=c("Year"), model="within")
-summary(fixed4)
-
-fixed5 <- lm(CETR_5 ~ log(sdg01+1) + log(sdg02+1) + log(sdg03+1) + log(sdg04+1) + log(sdg05+1) + log(sdg06+1) + log(sdg07+1) + log(sdg08+1) + 
-                +log(sdg09+1) + log(sdg10+1) + log(sdg11+1) + log(sdg12+1) + log(sdg13+1) + log(sdg14+1) + log(sdg15+1) + log(sdg16+1) + RDS + SIZE + LEV + 
-                FOREIGN + ctrygrp + Sector, data=data3)
-summary(fixed5)
-
-
+#test within and random effect and run Hausmann test
+form1 <- cetr_5_s ~ log(sdg+1) + RDS + SIZE + LEV + ROA + FOREIGN + ctrygrp
+ols <- lm(cetr_5_s ~ log(sdg+1) + RDS + SIZE + LEV + ROA + FOREIGN + ctrygrp + factor(Year), data = df)
+wi <- plm(form1, data = df, index=c("Year"), model = "within")
+re <- plm(form1, data = df_t, index=c("Year"), model = "random",  random.method = "walhus")
+#F-test to see if LM is better than OLS (pooling) https://rstudio-pubs-static.s3.amazonaws.com/372492_3e05f38dd3f248e89cdedd317d603b9a.html
+pFtest(wi, ols) # 
+phtest(re, wi) #  If the p-value is significant (for example <0.05) then use fixed effects, if not use random effects.
 
 
-data3 %>% filter(CETR_5 > -50 & CETR_scaled < 50 & Year %in% c(2016,2020)) %>%
-  ggplot(., aes(x=log(sdg02+1), y=CETR_5, col = Sector)) +
-  geom_point()  +
-  facet_grid(ctrygrp ~Year) +
-  coord_flip()
-
-data4 %>% filter(CETR_5 > 0 & CETR_5 < 1 & Year %in% c(2016,2020)) %>%
-  ggplot(., aes(x=ROA, y=CETR_5, col = Sector)) +
-  geom_point() +
-  facet_grid(. ~Year)
+form2 <- cetr_5_s ~ log(sdg01+1) + log(sdg02+1) + log(sdg03+1) + log(sdg04+1) + 
+  log(sdg05+1) + log(sdg06+1) + log(sdg07+1) + log(sdg08+1) + 
+  +log(sdg09+1) + log(sdg10+1) + log(sdg11+1) + log(sdg12+1) + 
+  log(sdg13+1) + log(sdg14+1) + log(sdg15+1) + log(sdg16+1) + 
+  log(sdg17+1) + RDS + SIZE + LEV + 
+  FOREIGN + ROA + ctrygrp + factor(Year)
 
 
-x <- df$CETR_5[df$report==1]
-y <- df$CETR_5[df$report==0]
-mean(x, na.rm = TRUE)
-mean(y, na.rm = TRUE)
+fixed2 <- plm(form2, data=df_t, index=c("Year"), model="within")
+summary(fixed2)
 
-# run a t-test on the means
-t.test(x, y = NULL,
-       alternative = c("greater"),
-       mu = 0, paired = FALSE, var.equal = FALSE,
-       conf.level = 0.95)
+random2 <- plm(form2, data=df_t, index=c("Year"), model="random",
+               random.method = "walhus")
+summary(random2)
+phtest(fixed2, random2)
 
-test <- wilcox.test(x, y, alternative = "greater")
-test
-
-
-#make a boxplot of delta-scaled versus sector
-df %>% filter(Year %in% c(2016,2020)) %>%
-  ggplot(., aes(x=report, y=delta_scaled, col = Sector)) +
-  geom_boxplot()
-df %>% group_by(Sector, Year) %>%
-  summarize(mean_delta = mean(delta_scaled, na.rm=TRUE),
-            mean_ROA = mean(PRETAX_INCOME/ASSETS, na.rm =TRUE)) %>%
-  arrange(mean_delta) %>%
-  ggplot(aes(mean_ROA, mean_delta, col = Year)) +
-  geom_point()
-
-#make a plot of sdg mentioning versus sector
-# make a plot of delta scaled versus sdg mentioning frequency
-df %>% filter(Year %in% c(2016,2020) & ctrygrp != "OTH") %>% ggplot(aes(Sector, log(sdg+1))) +
-  geom_boxplot() +
-  facet_grid(Year ~ ctrygrp) +
-  coord_flip()
+random4t <- plm(form2, data=df_t, index=c("Year"), 
+               effect = "twoways",
+               model="random", 
+               print.level = 3,
+               random.method = "walhus")
+summary(random4t)
 
 
-#make a plot of sdg  versus sector
+random4tb <- plm(form2, data=df_t_b, index=c("Year"), 
+               effect = "twoways",
+               model="random", 
+               print.level = 3,
+               random.method = "walhus")
+summary(random4tb)
 
-colors <- colorRampPalette(c("blue", "green", "yellow", "red"))(10)
+pool <- plm(form2, data=df_t_b, model="pooling", index=c("Year"), random.method = "walhus")
+summary(pool)
 
-df %>%  dplyr::select(Year, Sector, sdg01:sdg16, ctrygrp) %>%
-  filter(Year %in% c(2016,2020)) %>% 
-     pivot_longer(cols = sdg01:sdg16,
-                 names_to = "SDG",
-                 values_to = "count") %>%
-    ggplot(aes(Sector, SDG)) +
-  geom_tile(aes(fill = log(count)), na.rm = TRUE) +
+# Breusch-Pagan Lagrange Multiplier for random effects. Null is no panel effect (i.e. OLS better).
+plmtest(pool, type=c("bp"))
+# conclusion OLS is better
+
+
+
+library(pglm)
+
+random6 <- pglm(form2 ,
+               data=df_t, index=c("Year"), 
+               family = gaussian, 
+               effect = "time",
+               model="random", 
+               method = "nr",
+               print.level = 3)
+summary(random6)
+
+random7 <- pglm(form2, data=df_t, index=c("Year"), 
+                family = gaussian, 
+                model="random", 
+                effect = "twoways",
+                method = "nr",
+                print.level = 3)
+summary(random7)
+
+glm <- glm(form2, data=df_t_b,  
+            family = gaussian 
+            )
+summary(glm)
+
+
+#we draaien de DV en IV om
+form3 <- SDG ~ cetr_5_s + RDS + SIZE + LEV + FOREIGN + ROA + ctrygrp + factor(Year)
+random8 <- pglm(form3, data=df_t, index=c("Year", "ctrygrp"), 
+                family = binomial('probit'), 
+                model="random", 
+                effect = "twoways",
+                method = "nr",
+                print.level = 3)
+summary(random8)
+
+# Do some other analyses
+
+#top scorers SDG02 per Sector
+df %>% filter(cetr_5_s > -0.5 & cetr_5_s < 0.5 & Year == 2020) %>%
+  pivot_longer(cols = sdg01:sdg17, names_to = "Goal", values_to = "score") %>%
+  group_by(Sector, Goal) %>%
+  summarize(refs = sum(log(score+1))) %>%
+  pivot_wider(names_from = "Goal", values_from = "refs") 
+
+df %>% filter(cetr_5_s > -0.5 & cetr_5_s < 0.5 & Year == 2020) %>%
+  pivot_longer(cols = sdg01:sdg17, names_to = "Goal", values_to = "score") %>%
+  group_by(Sector, Goal) %>%
+  summarize(refs = mean(log(score+1))) %>%
+  ggplot(aes(Sector, Goal)) +
+  geom_tile(aes(fill = refs), na.rm = TRUE) +
   scale_fill_distiller(palette = "Spectral") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + 
-  theme(axis.text.y=element_text(size=5)) + 
-  coord_flip() +
-  facet_grid(ctrygrp ~ Year)
+  theme(axis.text.y=element_text(size=10))
 
-# make a plot of CETR_scaled versus sdg mentioning frequency
-df %>% filter(Year %in% c(2016,2020) & ctrygrp != "OTH") %>% 
-  ggplot(aes(log(sdg+1), CETR_5, color = ctrygrp)) +
-  geom_point() +
-  facet_grid(report ~ Year)
+#mean scores per sector of tax aggressiveness
+newdat <- df %>% filter(cetr_5_s > -0.5 & cetr_5_s < 0.5 & (Year == 2016 | Year == 2020)) %>%
+  group_by(Sector, Year) %>%
+  summarize(cetr_5_s_mean = mean(cetr_5_s), cetr_5_s_median = median(cetr_5_s), n = n()) 
 
-df %>% filter(Year %in% c(2016,2020) & ctrygrp != "OTH" ) %>% 
-  filter(CETR_scaled < 25 & CETR_scaled > -25) %>%
-  ggplot(aes(report, CETR_5)) +
-  geom_boxplot() +
-  facet_grid(ctrygrp ~ Year)
-summary(df$CETR_scaled)
-
-df %>% filter(Year %in% c(2016,2020) & ctrygrp != "OTH" ) %>% 
-  filter(CETR_scaled < 25 & CETR_scaled > -25) %>%
-  ggplot(aes(log(sdg+1), CETR_scaled)) +
-  geom_point() +
-  facet_grid(ctrygrp ~ Year)
-
-df_sdg <- df %>% filter(Year %in% c(2016,2020) & ctrygrp != "OTH" ) %>% 
-  filter(CETR_scaled < 25 & CETR_scaled > -25) %>%
-  mutate(SDG = case_when(
-    sdg > 0 ~ 1,
-    is.na(sdg)  ~ 0,
-    TRUE ~ 0)) %>%
-  select(SDG, sdg, CETR_scaled, CETR_5, ctrygrp, Year, report, SIZE, ROA, LEV, FOREIGN, sdg01:sdg16, RDS, Sector, Country) 
-df_sdg %>%
-  ggplot(aes(as.factor(SDG), CETR_5, color = ctrygrp)) +
-  geom_boxplot() +
-  facet_grid(. ~ Year)
-
-x <- df_sdg$CETR_5[df_sdg$SDG==1]
-y <- df_sdg$CETR_5[df_sdg$SDG==0]
-mean(x, na.rm = TRUE)
-mean(y, na.rm = TRUE)
+p<- newdat %>%
+  ggplot(aes(Sector, factor(Year))) +
+  geom_tile(aes(fill = -cetr_5_s_mean), na.rm = TRUE) +
+  scale_fill_distiller(palette = "Spectral") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + 
+  theme(axis.text.y=element_text(size=10))
+p + geom_text(data=newdat, aes(Sector, factor(Year),  
+                               label=n), col="black")
 
 # run a t-test on the means
 t.test(x, y = NULL,
@@ -289,41 +385,11 @@ t.test(x, y = NULL,
 test <- wilcox.test(x, y, alternative = "greater")
 test
 
-
-
-
-
-df %>% ggplot(aes(CETR_scaled)) + geom_histogram(binwidth = 10)
-df %>% ggplot(aes(CETR_scaled, CETR_5)) + geom_point()
-
-df_sdg$sdg[is.na(df_sdg$sdg)] <-0
-unique(df_sdg$sdg)
-df_sdg %>% filter(Year %in% c(2016,2020) & ctrygrp != "OTH") %>% ggplot(aes(CETR_scaled, log(sdg+1), color = ctrygrp)) +
-  geom_point() +
-  facet_grid(report ~ Year)
-
-
-
-fixed5 <- plm(CETR_5 ~  log(sdg+1)  + RDS +  ROA + SIZE + LEV + 
-                FOREIGN + Country, data=df_sdg, index=c("Year"), model="within")
-summary(fixed5)
-
-library(broom)
-df_sdg20 <- df_sdg %>% filter(Year == 2020)
-
-fit <- lm(CETR_scaled ~  log(sdg+1) + report + RDS +  SIZE + LEV + 
-     FOREIGN, data = df_sdg20)
-summary(fit)
-
-
-
-#US environmentally sensitive industries, including oil and gas extraction, mining (except oil and gas), support activities for mining, utilities, food manufacturing, beverage and tobacco product manufacturing, paper manufacturing, petroleum and coal products manufacturing, chemical manufacturing, and fabricated metal product manufacturing.
-# International Review of Accounting, Banking & Finance . Summer2012, Vol. 4 Issue 2, p61-99. 39p
 
 #make a heatmap of BTD versus Sector and ctrygrp
 
-df_windsor <- df  %>%  dplyr::select(Year, Sector, ctrygrp, CETR_5, CETR_scaled, BTD, sdg, report, gc, gri, int) %>%
-  filter(Year %in% c(2016,2020) & CETR_scaled > -25 & CETR_scaled < 25) %>% 
+df_windsor <- df  %>%  dplyr::select(Year, Sector, ctrygrp, cetr_5, cetr_5_s, sdg, report) %>%
+  filter(Year %in% c(2016,2020) & cetr_5_s > -0.25 & cetr_5_s < 0.25) %>% 
   group_by(Sector, ctrygrp, report) %>% summarize(mCETR_scaled = mean(CETR_scaled, na.rm=TRUE), Year = Year, report = report)
 
 df_windsor %>%
@@ -335,6 +401,90 @@ df_windsor %>%
   coord_flip() +
   facet_grid(report ~ Year)
 
-df %>% filter(Year %in% c(2016,2020) & ctrygrp != "OTH") %>% ggplot(aes(CETR_5, SIZE, color = ctrygrp)) +
-  geom_point() +
-  facet_grid(. ~ Year)
+
+#make a decision tree
+library(caret)
+library(rpart)
+library(rpart.plot)
+
+#create a data partition
+data <- df_t %>% select(cetr_5_s, SIZE, Year, report,  ROA, sdg,
+                          LEV, FOREIGN, ctrygrp, Sector, SDG, RDS,  sdg01:sdg17) %>%
+  drop_na() %>% mutate(SDG = as.factor(as.numeric(SDG)))
+set.seed(1, sample.kind = "Rounding")
+trainIndex <- createDataPartition(data$TAP, p = .5, 
+                                  list = FALSE, 
+                                  times = 1)
+
+#  mutate(SDG = as.factor(SDG))
+train <- data[trainIndex,]
+test <- data[-trainIndex,]
+
+# train a decision tree for test
+library(rpart)
+set.seed(2, sample.kind = "Rounding")
+model1 <- train(cetr_5_s ~ SIZE +  report + SDG + ctrygrp , data = train, 
+                method = "rpart",
+                preProcess = c("center", "scale"),
+                tuneLength = 10,
+                trControl = trainControl(method = "cv"),
+                na.action=na.exclude)
+
+y_hat1 <- predict(model1, newdata = test)
+cfm_m1 <- confusionMatrix(y_hat1, test$TAP2, dnn = c("Prediction", "Reference"))
+cfm_m1$overall[1]
+importance(model1)
+print(cfm_m1)
+summary.r(data3$TAP)
+
+#visualize the decision tree
+summary(data$TAP)
+library(rpart.plot)
+set.seed(3, sample.kind = "Rounding")
+model2 <- rpart( cetr_5_s ~  SIZE + ctrygrp + Year + sdg01 + sdg02 +sdg03 +sdg04 + sdg05 +
+                   sdg06 + sdg07 + sdg08 +sdg09 +sdg10 +sdg11 +sdg12 +sdg13 +sdg14 +sdg15 +
+                   sdg16 + sdg17 + FOREIGN + LEV + RDS , data = train, 
+                method = "anova", 
+                control = rpart.control(cp = 0.01),
+                na.action=na.exclude)
+y_hat2 <- predict(model2, newdata = test)
+cfm_m2 <- confusionMatrix(y_hat2, test$SDG, dnn = c("Prediction", "Reference"),
+                          na.action = na.pass)
+importance <- as.data.frame(model2$variable.importance)
+plot(model2)
+rpart.plot(model2, type = 2)
+printcp(model2)
+
+length(train$ctrygrp[train$ctrygrp=="USA"])
+length(train$ctrygrp[train$ctrygrp=="EUR"])
+length(train$ctrygrp[train$ctrygrp=="JKT"])
+
+
+prp(model2, main = "3")
+
+#random forest
+library(randomForest)
+unique(df$TAP)
+set.seed(4, sample.kind = "Rounding")
+ft = randomForest(cetr_5_s ~ SIZE + report + ctrygrp + SDG + sdg16 + sdg17 + FOREIGN + RDS + Year , 
+                  data = train, 
+                  importance = TRUE,
+                  na.action=na.exclude)
+ft
+importance(ft)
+y_hat3 <- predict(ft, newdata = test)
+cm <- confusionMatrix(y_hat3, test$cetr_5_s, dnn = c("Prediction", "Reference"))
+summary(ft)
+
+
+#random forest
+library(randomForest)
+set.seed(4, sample.kind = "Rounding")
+
+ft2 = randomForest(TAP2 ~ SIZE +  report + ctrygrp + LEV  + ROA +  FOREIGN +sdg, 
+                   data = train, importance = TRUE)
+ft2
+importance(ft2)
+y_hat <- predict(ft2, newdata = test)
+cm <- confusionMatrix(y_hat, test$TAP2, dnn = c("Prediction", "Reference"))
+print(cm)

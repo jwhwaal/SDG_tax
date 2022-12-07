@@ -4,12 +4,6 @@ library(readxl)
 
 
 # DATA LOADING AND WRANGLING
-#read the master financial data of the sample from the Factset Excel-sheet
-
-data <- read_excel("sample_report.xlsx", 
-                                    sheet = "sample_long") %>%
-  filter(Year %in% c(2016, 2020))
-
 #import statutory tax rates from Tax Foundation.org
 taxrates_81_21 <- read_excel("taxrates_81_21.xlsx")
 tr <- taxrates_81_21 %>% filter(iso_2 %in% unique(data$Country) & year %in% c(2016:2020)) %>%
@@ -17,23 +11,21 @@ tr <- taxrates_81_21 %>% filter(iso_2 %in% unique(data$Country) & year %in% c(20
   select(iso_2, country, year, stat_rate)
 unique(data$Country)
 
-# import Cetr_5_scaled file calculated separately.
-longlist_3 <- read_delim("longlist_3.csv", 
-                         ";", escape_double = FALSE, 
-                         col_types = cols(str = col_number(), 
-                         PTI = col_number(), CTP = col_number(), 
-                         cetr_5 = col_number(), diff = col_number(), 
-                         cetr_5_s = col_number()), trim_ws = TRUE,
-                         na =c("#N/B")) %>%
-                         filter(year %in% c(2016, 2020))
+# import financial data
+longlist_3 <- longlist_3 <- read_delim("longlist_3.csv", 
+                                       delim = ";", escape_double = FALSE, 
+                                       col_types = cols(PTI = col_double(), TXT = col_double(),
+                                        CTP = col_double(), 
+                                        cetr_5 = col_double(), diff_c = col_double(), 
+                                        cetr_5_s = col_double(), LTD = col_double(),
+                                        etr_5 = col_double(), etr_5_s = col_double(),
+                                        diff_e = col_double(),ASSETS = col_double(),
+                                        RD = col_double(), PTI_FOREIGN = col_double(),
+                                        ROA = col_double()), 
+                                       trim_ws = TRUE) 
 
-#join the cetr_5_scaled data and the country/year statutory tax rates on the Factset data and 
-data1 <- data %>% left_join(.,longlist_3, by = c("Year" = "year", "ISIN" = "ISIN", "Country" = "Country" )) %>%
-  select(ISIN, Sector, Year, LTD, RD, PTI_FOREIGN, PTI, CTP, cetr_5, cetr_5_s, ASSETS, Country, ROA, MCAP) %>%
-  mutate(LTD = as.numeric(LTD), RD = as.numeric(RD), PTI_FOREIGN = as.numeric(PTI_FOREIGN)) %>%
-  left_join(.,tr, by = c("Country" = "iso_2", "Year" = "year")) %>%
-  mutate(across(PTI:cetr_5_s, as.numeric))
-
+longlist_3 <- longlist_3 %>% select(-Column1) %>%
+                         filter(year == 2016 | year == 2020)
 
 #logit conversion function to be used with "SHELTER", Wilson 2009. Is een logistic,
 logit2prob = function(logit){
@@ -42,9 +34,8 @@ logit2prob = function(logit){
   return(prob)
 }
 
-
 #create new variables. TAP = Tax aggressiveness probability
-data2 <- data1 %>% mutate(
+data2 <- longlist_3 %>% mutate(
                       LEV = LTD/ASSETS,
                       RDS = RD/ASSETS, #R&D expenses scaled by assets
                       SIZE = log(ASSETS),
@@ -52,7 +43,7 @@ data2 <- data1 %>% mutate(
                       PTI_FOREIGN > 1 ~ 1, #foreign pre-tax income
                         is.na(PTI_FOREIGN)  ~ 0,
                         TRUE ~ 0),
-                      BTD = (PTI*stat_rate*0.01-CTP)/ASSETS, #book-tax difference
+                      BTD = (PTI*str*0.01-CTP)/ASSETS, #book-tax difference
                       SHELTER = -4.30 + 6.63*BTD -1.72*LEV + 
   0.66*SIZE + 2.26*ROA + 1.62*FOREIGN + 1.56*RDS, #Wilson's Tax Shelter Probability
   TAP = as.factor(round(logit2prob(SHELTER),0))
@@ -94,12 +85,13 @@ out_temp <- outdata %>%
             report = sum(report))
 #join the resulting scores data frame on to the data2.
 
-out_temp %>% group_by(company, year)  %>% summarize(n = n()) %>% arrange(desc(n))
+out_temp %>% group_by(company, year)  %>% summarize(n = n()) %>% 
+  arrange(desc(n))
 
 
 
 length(unique(out_temp$company))
-length()
+
 df <- data2 %>% left_join(.,out_temp, by = c("ISIN" = "company", "Year"= "year"))
 
 #create country groups based on country,# the last line of code replaces all NAs with zero
@@ -114,6 +106,7 @@ mutate(., across(sdg01:int, ~ifelse(is.na(.x),0,.x)))) %>%
   mutate(report = ifelse(is.na(report),0, 1))
 # and write the final data frame disk for future reference
 write.csv(df, "df_table.txt")
+
 
 
 # ANALYSIS
@@ -145,6 +138,9 @@ df <- df %>%
 df$SDG <- recode(df$SDG, "1" = "SDG", "0" = "noSDG")
 df$report <- recode(df$report, "1" = "report", "0" = "no report")
 df$TAP <- recode(df$TAP, "1" = "Tax Aggressive", "0" = "Not Tax Aggressive")
+# and write the final data frame disk for future reference
+write.csv(df, "df_tax.txt")
+save(df, file = "df_tax.Rdata" )
 
 #check how many different companies there are. It should be 300
 length(unique(df$ISIN))
@@ -152,7 +148,8 @@ length(unique(df$ISIN))
 # Make a summary statistics table
 library(vtable)
 var.labs <- data.frame(var = c("SIZE", "PTI_FOREIGN",
-                               "PTI", "CTP","ROA", "cetr_5", "cetr_5_s", 
+                               "PTI", "CTP","ROA", "cetr_5", "cetr_5_s", 'etr_5',
+                               "etr_5_s",
                                   "stat_rate",
                                "LEV", "BTD",
                                "TAP",  "report", "SDG"),
@@ -160,6 +157,7 @@ var.labs <- data.frame(var = c("SIZE", "PTI_FOREIGN",
                                   "Foreign Pre-tax Income", "Pre-tax Income", 
                                   "Cash Taxes Paid", "Return on Assets %",
                                   "5-year CETR", "scaled 5-year CETR",
+                                  "5-year ETR", "scaled 5-year ETR",
                                   "Statutory Tax Rate", 
                                   "Leverage%",  
                                   "Book-Tax Difference/Assets",
@@ -266,7 +264,7 @@ re <- plm(form1, data = df_t, index=c("Year"), model = "random",  random.method 
 #F-test to see if LM is better than OLS (pooling) https://rstudio-pubs-static.s3.amazonaws.com/372492_3e05f38dd3f248e89cdedd317d603b9a.html
 pFtest(wi, ols) # 
 phtest(re, wi) #  If the p-value is significant (for example <0.05) then use fixed effects, if not use random effects.
-
+summary(ols)
 
 form2 <- cetr_5_s ~ log(sdg01+1) + log(sdg02+1) + log(sdg03+1) + log(sdg04+1) + 
   log(sdg05+1) + log(sdg06+1) + log(sdg07+1) + log(sdg08+1) + 
@@ -392,9 +390,9 @@ df_windsor <- df  %>%  dplyr::select(Year, Sector, ctrygrp, cetr_5, cetr_5_s, sd
   filter(Year %in% c(2016,2020) & cetr_5_s > -0.25 & cetr_5_s < 0.25) %>% 
   group_by(Sector, ctrygrp, report) %>% summarize(mCETR_scaled = mean(CETR_scaled, na.rm=TRUE), Year = Year, report = report)
 
-df_windsor %>%
+df_t %>%
   ggplot(aes(Sector, ctrygrp)) +
-  geom_tile(aes(fill = mCETR_scaled)) +
+  geom_tile(aes(fill = cetr_5_s)) +
   scale_fill_continuous(type = "viridis") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + 
   theme(axis.text.y=element_text(size=5)) + 
@@ -408,14 +406,15 @@ library(rpart)
 library(rpart.plot)
 
 #create a data partition
-data <- df_t %>% select(cetr_5_s, SIZE, Year, report,  ROA, sdg,
-                          LEV, FOREIGN, ctrygrp, Sector, SDG, RDS,  sdg01:sdg17) %>%
-  drop_na() %>% mutate(SDG = as.factor(as.numeric(SDG)))
+data <- df_t %>% select(cetr_5_s, SIZE, Year, report,  ROA, sdg, 
+                          LEV, FOREIGN, ctrygrp, Sector, SDG, sdg01:sdg17) %>%
+  drop_na() %>% mutate(SDG = as.factor(as.numeric(SDG)),
+                       TA = as.factor(ifelse(cetr_5_s < median(df_t$cetr_5_s), 1, 0)))
 set.seed(1, sample.kind = "Rounding")
-trainIndex <- createDataPartition(data$TAP, p = .5, 
+trainIndex <- createDataPartition(data$TA, p = .5, 
                                   list = FALSE, 
                                   times = 1)
-
+summary(df_t)
 #  mutate(SDG = as.factor(SDG))
 train <- data[trainIndex,]
 test <- data[-trainIndex,]
@@ -423,7 +422,7 @@ test <- data[-trainIndex,]
 # train a decision tree for test
 library(rpart)
 set.seed(2, sample.kind = "Rounding")
-model1 <- train(cetr_5_s ~ SIZE +  report + SDG + ctrygrp , data = train, 
+model1 <- train(factor(TA) ~ SIZE +  report + SDG + ctrygrp , data = train, 
                 method = "rpart",
                 preProcess = c("center", "scale"),
                 tuneLength = 10,
@@ -431,25 +430,28 @@ model1 <- train(cetr_5_s ~ SIZE +  report + SDG + ctrygrp , data = train,
                 na.action=na.exclude)
 
 y_hat1 <- predict(model1, newdata = test)
-cfm_m1 <- confusionMatrix(y_hat1, test$TAP2, dnn = c("Prediction", "Reference"))
+cfm_m1 <- confusionMatrix(y_hat1, factor(test$TA), dnn = c("Prediction", "Reference"))
 cfm_m1$overall[1]
 importance(model1)
 print(cfm_m1)
-summary.r(data3$TAP)
+summary.r(data3$TA)
 
 #visualize the decision tree
-summary(data$TAP)
+summary(data$TA)
 library(rpart.plot)
 set.seed(3, sample.kind = "Rounding")
-model2 <- rpart( cetr_5_s ~  SIZE + ctrygrp + Year + sdg01 + sdg02 +sdg03 +sdg04 + sdg05 +
+model2 <- rpart(TA ~  SIZE + ctrygrp + Year + sdg01 + sdg02 +sdg03 +sdg04 + sdg05 +
                    sdg06 + sdg07 + sdg08 +sdg09 +sdg10 +sdg11 +sdg12 +sdg13 +sdg14 +sdg15 +
-                   sdg16 + sdg17 + FOREIGN + LEV + RDS , data = train, 
-                method = "anova", 
-                control = rpart.control(cp = 0.01),
+                   sdg16 + sdg17 + FOREIGN + LEV , data = train, 
+                method = "class", 
+                control = rpart.control(cp = 0.001),
                 na.action=na.exclude)
-y_hat2 <- predict(model2, newdata = test)
-cfm_m2 <- confusionMatrix(y_hat2, test$SDG, dnn = c("Prediction", "Reference"),
+y_hat2 <- predict(model2, newdata = test, type = "class")
+
+cfm_m2 <- confusionMatrix(y_hat2, test$TA, dnn = c("Prediction", "Reference"),
                           na.action = na.pass)
+length(y_hat2)
+length(test$TA)
 importance <- as.data.frame(model2$variable.importance)
 plot(model2)
 rpart.plot(model2, type = 2)

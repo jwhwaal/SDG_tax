@@ -4,15 +4,9 @@ library(readxl)
 
 
 # DATA LOADING AND WRANGLING
-#import statutory tax rates from Tax Foundation.org
-taxrates_81_21 <- read_excel("taxrates_81_21.xlsx")
-tr <- taxrates_81_21 %>% filter(iso_2 %in% unique(data$Country) & year %in% c(2016:2020)) %>%
-  mutate(stat_rate=as.numeric(rate)) %>%
-  select(iso_2, country, year, stat_rate)
-unique(data$Country)
 
 # import financial data
-longlist_3 <- longlist_3 <- read_delim("longlist_3.csv", 
+longlist_3 <- read_delim("longlist_3.csv", 
                                        delim = ";", escape_double = FALSE, 
                                        col_types = cols(PTI = col_double(), TXT = col_double(),
                                         CTP = col_double(), 
@@ -24,8 +18,13 @@ longlist_3 <- longlist_3 <- read_delim("longlist_3.csv",
                                         ROA = col_double()), 
                                        trim_ws = TRUE) 
 
-longlist_3 <- longlist_3 %>% select(-Column1) %>%
-                         filter(year == 2016 | year == 2020)
+longlist <- longlist_3 %>% select(-Column1) %>%
+                         filter(year == 2016 | year == 2020) 
+
+longlist <- 
+  inner_join(longlist, e, by = c( "year" = "Year", "ISIN" = "ISIN")) %>%
+  distinct(ISIN, year, .keep_all = TRUE)
+
 
 #logit conversion function to be used with "SHELTER", Wilson 2009. Is een logistic,
 logit2prob = function(logit){
@@ -35,7 +34,7 @@ logit2prob = function(logit){
 }
 
 #create new variables. TAP = Tax aggressiveness probability
-data2 <- longlist_3 %>% mutate(
+data2 <- longlist %>% mutate(
                       LEV = LTD/ASSETS,
                       RDS = RD/ASSETS, #R&D expenses scaled by assets
                       SIZE = log(ASSETS),
@@ -84,15 +83,20 @@ out_temp <- outdata %>%
             int = sum(int), 
             report = sum(report))
 #join the resulting scores data frame on to the data2.
+#check if SDG is mentioned
+#out_temp$SDG_count <- rowSums(out_temp[,c(3:19)]>0)
 
-out_temp %>% group_by(company, year)  %>% summarize(n = n()) %>% 
+out_temp <- out_temp %>% rowwise() %>% 
+  mutate(s_themes = sum(c_across(sdg01:sdg17)>0)) 
+#check if every company per year is only mentioned once
+out_temp %>% group_by(company, year) %>% summarize(n = n()) %>% 
   arrange(desc(n))
 
 
 
 length(unique(out_temp$company))
 
-df <- data2 %>% left_join(.,out_temp, by = c("ISIN" = "company", "Year"= "year"))
+df <- data2 %>% left_join(.,out_temp, by = c("ISIN" = "company", "year"= "year"))
 
 #create country groups based on country,# the last line of code replaces all NAs with zero
 
@@ -107,6 +111,10 @@ mutate(., across(sdg01:int, ~ifelse(is.na(.x),0,.x)))) %>%
 # and write the final data frame disk for future reference
 write.csv(df, "df_table.txt")
 
+
+#join performance relative to Sector mean ROA before tax
+#a <- aspiration_levels %>% select(ISIN, Year, Factset_sector, performance, Sector)
+#df <- df %>% left_join(.,a_mp, by = c("ISIN"= "ISIN", "year"= "year"))
 
 
 # ANALYSIS
@@ -177,34 +185,40 @@ df %>%
   geom_boxplot()
 #H1 tax versus SR/IR
 #make a boxplot of  Cash ETR_5 >0;  winsorize data 
-df %>% filter(Year %in% c(2016,2020) & cetr_5 >0 & cetr_5 <1) %>%
+df %>% filter(year %in% c(2016,2020) & cetr_5 >0 & cetr_5 <1) %>%
   ggplot(., aes(x=report, y=cetr_5_s, col = ctrygrp)) +
   geom_boxplot() +
-  facet_grid(. ~ Year)
+  facet_grid(. ~ year)
 
-df %>% filter(Year %in% c(2016,2020) & cetr_5 >0 & cetr_5 <0.5) %>%
+df %>% filter(year %in% c(2016,2020) & cetr_5 >0 & cetr_5 <0.5) %>%
   ggplot(., aes(x=INT, y=cetr_5_s, col = ctrygrp)) +
   geom_boxplot() +
-  facet_grid(. ~ Year)
+  facet_grid(. ~ year)
 
-df %>% filter(Year %in% c(2016,2020) & cetr_5 >0 & cetr_5 <0.5) %>%
+df %>% filter(year %in% c(2016,2020) & cetr_5 >0 & cetr_5 <0.5) %>%
   ggplot(., aes(x=GC, y=cetr_5_s, col = ctrygrp)) +
   geom_boxplot() +
-  facet_grid(. ~ Year)
+  facet_grid(. ~ year)
+
+
 
 
 #H2 make boxplots of CETR_5_S versus SDG mentioning
 #make a boxplot of scaled Cash ETR
 df %>% filter(cetr_5 < 0.5 & cetr_5 > 0) %>%
-  ggplot(., aes(x=SDG, y=cetr_5_s)) +
-  geom_boxplot() +
-  facet_grid(ctrygrp ~ Year)
+  ggplot(., aes(x=cetr_5_s, y=mPerf)) +
+  geom_point() +
+  facet_grid(ctrygrp ~ year)
 
 df %>% filter(cetr_5_s < 0.25 & cetr_5_s > -0.25) %>%
   ggplot(., aes(x=log(sdg+1), y=cetr_5_s, col = ctrygrp)) +
   geom_point() +
   geom_smooth(method=lm, se=TRUE, fullrange=TRUE,aes(group=ctrygrp))
 
+df %>% filter(cetr_5_s < 0.25 & cetr_5_s > -0.25) %>%
+  ggplot(., aes(x=SDG_count, y=cetr_5_s)) +
+  geom_point() +
+    facet_grid(year ~ctrygrp)
 
 df %>% filter(cetr_5_s < 0.25 & cetr_5_s > -0.25) %>%
   ggplot(., aes(x=ctrygrp, y=cetr_5_s)) +
@@ -212,11 +226,36 @@ df %>% filter(cetr_5_s < 0.25 & cetr_5_s > -0.25) %>%
   facet_grid(. ~ Year)
 
 df %>% filter(cetr_5_s < 0.25 & cetr_5_s > -0.25) %>%
+  select(ctrygrp, year, s_themes) %>%
+  ggplot(., aes(x=ctrygrp, y=s_themes)) +
+  geom_boxplot() +
+  facet_grid(. ~ year)
+
+df %>% filter(cetr_5_s < 0.25 & cetr_5_s > -0.25) %>%
   pivot_longer(cols = sdg01:sdg17, names_to = "Goal", values_to = "score") %>%
-  filter(Year ==2020) %>%
+  filter(year ==2020) %>%
   ggplot(., aes(x=log(score+1), y=cetr_5_s, col = ctrygrp)) +
   geom_point(alpha = 0.5) +
   facet_wrap(. ~ Goal)
+
+df %>% filter(cetr_5_s < 0.25 & cetr_5_s > -0.25) %>%
+  pivot_longer(cols = sdg01:sdg17, names_to = "Goal", values_to = "score") %>%
+  filter(year ==2020) %>%
+  ggplot(., aes(x=log(score+1), y=cetr_5_s, col = ctrygrp)) +
+  geom_point(alpha = 0.5) +
+  facet_wrap(. ~ Goal)
+
+
+
+#make graph of cetr versus performance and SDG
+
+  df %>% filter(cetr < 0.5 & cetr > 0) %>%
+  ggplot(., aes(x=performance, y=cetr)) +
+  geom_point() +
+  facet_grid(ctrygrp ~ year) +
+    geom_smooth(type = "glm", formula = y ~x)
+
+
 
 #Unpaired Wilcoxon 
 # Subset  data before treatment
@@ -251,38 +290,47 @@ df %>% is.pbalanced(index =c("Year", "ISIN"))
 #truncate data for cetr_5 > 0 and cetr_5 <0.5 (as is customary in other)
 df_t <- df %>% filter(cetr_5 > 0 & cetr_5 < 0.5)
 # check if data set is balanced
-df_t %>% is.pbalanced(index =c("Year", "ISIN"))
+df_t %>% is.pbalanced(index =c("year", "ISIN"))
 #if required, balance truncated data
-df_t_b <- df_t %>% make.pbalanced(index =c("Year", "ISIN"), balance.type = "shared.times")
+df_t_b <- df_t %>% make.pbalanced(index =c("year", "ISIN"), balance.type = "shared.times")
 duplicated(df_t)
 
+#SOME REGRESSIONS
+form1 <- cetr_5_s ~ log(sdg+1) + s_themes + SIZE + performance + factor(year)
+
+
+form2 <- cetr_5_s ~ log(sdg01+1) + log(sdg02+1) + log(sdg03+1) + log(sdg04+1) + 
+  log(sdg05+1) + log(sdg06+1) + log(sdg07+1) + log(sdg08+1) + 
+  +log(sdg09+1) + log(sdg10+1) + log(sdg11+1) + log(sdg12+1) + 
+  log(sdg13+1) + log(sdg14+1) + log(sdg15+1) + log(sdg16+1) + 
+  log(sdg17+1) + mPerf + SIZE + LEV + 
+  FOREIGN  + factor(year)
+
+form3 <- cetr ~ log(sdg+1) + SIZE + performance + ctrygrp + factor(year)
+
+
 #test within and random effect and run Hausmann test
-form1 <- cetr_5_s ~ log(sdg+1) + RDS + SIZE + LEV + ROA + FOREIGN + ctrygrp
-ols <- lm(cetr_5_s ~ log(sdg+1) + RDS + SIZE + LEV + ROA + FOREIGN + ctrygrp + factor(Year), data = df)
-wi <- plm(form1, data = df, index=c("Year"), model = "within")
+form1 <- cetr ~ report + log(sdg+1) + SDG_count +  SIZE + performance + LEV +  FOREIGN + ctrygrp + factor(year)
+ols <- lm(form1, data = df_t)
+wi <- plm(form1, data = df_t, index=c("Year"), model = "within")
 re <- plm(form1, data = df_t, index=c("Year"), model = "random",  random.method = "walhus")
 #F-test to see if LM is better than OLS (pooling) https://rstudio-pubs-static.s3.amazonaws.com/372492_3e05f38dd3f248e89cdedd317d603b9a.html
 pFtest(wi, ols) # 
 phtest(re, wi) #  If the p-value is significant (for example <0.05) then use fixed effects, if not use random effects.
 summary(ols)
 
-form2 <- cetr_5_s ~ log(sdg01+1) + log(sdg02+1) + log(sdg03+1) + log(sdg04+1) + 
-  log(sdg05+1) + log(sdg06+1) + log(sdg07+1) + log(sdg08+1) + 
-  +log(sdg09+1) + log(sdg10+1) + log(sdg11+1) + log(sdg12+1) + 
-  log(sdg13+1) + log(sdg14+1) + log(sdg15+1) + log(sdg16+1) + 
-  log(sdg17+1) + RDS + SIZE + LEV + 
-  FOREIGN + ROA + ctrygrp + factor(Year)
 
 
-fixed2 <- plm(form2, data=df_t, index=c("Year"), model="within")
+
+fixed2 <- plm(form2, data=df_t, index=c("year"), model="within")
 summary(fixed2)
 
-random2 <- plm(form2, data=df_t, index=c("Year"), model="random",
+random2 <- plm(form2, data=df_t, index=c("year"), model="random",
                random.method = "walhus")
 summary(random2)
 phtest(fixed2, random2)
 
-random4t <- plm(form2, data=df_t, index=c("Year"), 
+random4t <- plm(form2, data=df_t, index=c("year"), 
                effect = "twoways",
                model="random", 
                print.level = 3,
@@ -290,26 +338,28 @@ random4t <- plm(form2, data=df_t, index=c("Year"),
 summary(random4t)
 
 
-random4tb <- plm(form2, data=df_t_b, index=c("Year"), 
+random4tb <- plm(form2, data=df_t_b, index=c("year"), 
                effect = "twoways",
                model="random", 
                print.level = 3,
                random.method = "walhus")
 summary(random4tb)
 
-pool <- plm(form2, data=df_t_b, model="pooling", index=c("Year"), random.method = "walhus")
+pool <- plm(form1, data=df_t_b, model="pooling", index=c("year"), random.method = "walhus")
 summary(pool)
 
 # Breusch-Pagan Lagrange Multiplier for random effects. Null is no panel effect (i.e. OLS better).
 plmtest(pool, type=c("bp"))
 # conclusion OLS is better
 
+ols <- lm(form1, data = df_t_b)
+summary(ols)
 
 
 library(pglm)
 
-random6 <- pglm(form2 ,
-               data=df_t, index=c("Year"), 
+random6 <- pglm(form1 ,
+               data=df_t, index=c("year"), 
                family = gaussian, 
                effect = "time",
                model="random", 
@@ -317,7 +367,7 @@ random6 <- pglm(form2 ,
                print.level = 3)
 summary(random6)
 
-random7 <- pglm(form2, data=df_t, index=c("Year"), 
+random7 <- pglm(form1, data=df_t, index=c("year"), 
                 family = gaussian, 
                 model="random", 
                 effect = "twoways",
@@ -325,15 +375,15 @@ random7 <- pglm(form2, data=df_t, index=c("Year"),
                 print.level = 3)
 summary(random7)
 
-glm <- glm(form2, data=df_t_b,  
+glm <- glm(form1, data=df_t,  
             family = gaussian 
             )
 summary(glm)
 
 
 #we draaien de DV en IV om
-form3 <- SDG ~ cetr_5_s + RDS + SIZE + LEV + FOREIGN + ROA + ctrygrp + factor(Year)
-random8 <- pglm(form3, data=df_t, index=c("Year", "ctrygrp"), 
+form3 <- SDG ~ cetr_5_s + SIZE + LEV + mPerf + factor(year)
+random8 <- pglm(form3, data=df_t, index=c("year", "ctrygrp"), 
                 family = binomial('probit'), 
                 model="random", 
                 effect = "twoways",
@@ -406,8 +456,8 @@ library(rpart)
 library(rpart.plot)
 
 #create a data partition
-data <- df_t %>% select(cetr_5_s, SIZE, Year, report,  ROA, sdg, 
-                          LEV, FOREIGN, ctrygrp, Sector, SDG, sdg01:sdg17) %>%
+data <- df_t %>% select(cetr_5_s, SIZE, year, report,  ROA, sdg, mPerf, 
+                          LEV, FOREIGN, ctrygrp,  SDG, sdg01:sdg17) %>%
   drop_na() %>% mutate(SDG = as.factor(as.numeric(SDG)),
                        TA = as.factor(ifelse(cetr_5_s < median(df_t$cetr_5_s), 1, 0)))
 set.seed(1, sample.kind = "Rounding")
@@ -422,7 +472,7 @@ test <- data[-trainIndex,]
 # train a decision tree for test
 library(rpart)
 set.seed(2, sample.kind = "Rounding")
-model1 <- train(factor(TA) ~ SIZE +  report + SDG + ctrygrp , data = train, 
+model1 <- train(factor(TA) ~ SIZE +  report + SDG + mPerf + ctrygrp , data = train, 
                 method = "rpart",
                 preProcess = c("center", "scale"),
                 tuneLength = 10,
@@ -440,15 +490,13 @@ summary.r(data3$TA)
 summary(data$TA)
 library(rpart.plot)
 set.seed(3, sample.kind = "Rounding")
-model2 <- rpart(TA ~  SIZE + ctrygrp + Year + sdg01 + sdg02 +sdg03 +sdg04 + sdg05 +
-                   sdg06 + sdg07 + sdg08 +sdg09 +sdg10 +sdg11 +sdg12 +sdg13 +sdg14 +sdg15 +
-                   sdg16 + sdg17 + FOREIGN + LEV , data = train, 
-                method = "class", 
-                control = rpart.control(cp = 0.001),
+model2 <- rpart(cetr_5_s ~  SIZE + ctrygrp + year + sdg + FOREIGN + LEV + mPerf, data = train, 
+                method = "anova", 
+                control = rpart.control(cp = 0.01),
                 na.action=na.exclude)
 y_hat2 <- predict(model2, newdata = test, type = "class")
 
-cfm_m2 <- confusionMatrix(y_hat2, test$TA, dnn = c("Prediction", "Reference"),
+cfm_m2 <- confusionMatrix(y_hat2, test$cetr_5_s, dnn = c("Prediction", "Reference"),
                           na.action = na.pass)
 length(y_hat2)
 length(test$TA)

@@ -1,0 +1,5 @@
+
+Table 1: Summary statistics
+=================================
+Statistic N Mean St. Dev. Min Max
+=================================

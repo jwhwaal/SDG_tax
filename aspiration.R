@@ -2,32 +2,55 @@ library(readr)
 library(tidyverse)
 library(dplyr)
 aspiration <- read_delim("aspiration.csv", 
-                         delim = ";", escape_double = FALSE, col_types = cols(ROA = col_double()), 
-                         trim_ws = TRUE)
-
+                         delim = ";", escape_double = FALSE, 
+                         col_types = cols(ROA = col_double()), 
+                         trim_ws = TRUE) %>% select(-c(Column1, Column2)) %>% 
+                         distinct()
+# calculate average performances per Factset_sector
 a <- aspiration %>% filter(!(Factset_sector == "#N/B")) %>%
   group_by(Factset_sector, Year) %>% dplyr::summarise(mean_ROA = mean(ROA, na.rm=T), n= n(),
                                                       median_ROA = median(ROA, na.rm=T))
 a
+#calculate average performance over a 5-year average using rolling mean from zoo
+#we are not using this, because it is not compared to the average industry performance, and
+#it is questionable what it would mean. Timbate uses year relative performance and cetr. 
+library(zoo)
+aspiration <- aspiration %>% mutate(yrgrp16 = ifelse(Year %in% c(2012:2015), 1,0),
+                      yrgrp20 = ifelse(Year %in% c(2016:2020), 1,0))  %>%
+group_by(ISIN) %>% arrange(ISIN) %>%
+  mutate(mPerf = 
+           rollmean(ROA, k = 5, fill = NA, align = "left")) %>%
+  select(ISIN, Year, mPerf, ROA, Factset_sector)
+
 
 table(aspiration$ctrygrp, aspiration$Factset_sector)
 
 
 aspiration_levels <- left_join(aspiration, a, by=c("Factset_sector" = "Factset_sector", "Year" = "Year")) %>%
-  mutate(performance = ROA-mean_ROA)
+  mutate(performance = ROA-mean_ROA) %>%
+  mutate(performance = Winsorize(performance, probs = c(0.01, 0.99), na.rm = TRUE))
+#
+e <- aspiration_levels %>% 
+  right_join(.,longlist_3, by = c("ISIN" = "ISIN", "Year" = "year")) %>% 
+  mutate(cetr = CTP/PTI) %>% 
+  select(ISIN, performance, cetr, Year, Factset_sector)
+save(e, file = "performance.Rdata")
 
-aspiration_levels %>% ggplot(aes(performance, Factset_sector)) +
-  geom_boxplot() +
-  facet_grid(. ~ ctrygrp)
+#===============================================================================
+#de rest is wat plotten
 
-aspiration_levels %>% ggplot(aes(factor(Year), performance)) +
+
+aspiration_levels %>% ggplot(aes(Year, performance, fill = Factset_sector)) +
+  geom_boxplot() 
+
+aspiration_levels %>% ggplot(aes(factor(Year), performance) +
   geom_boxplot() +
   facet_wrap( . ~Factset_sector)
 
 etr_perf <- aspiration_levels %>% 
   right_join(.,longlist_3, by = c("ISIN" = "ISIN", "Year" = "year"))
 
-e <- etr_perf %>% mutate(cetr = CTP/PTI) %>% select(ISIN, performance, cetr, Year, ctrygrp, Factset_sector)
+
 
 
 e %>% filter(cetr<1 & cetr > 0) %>%

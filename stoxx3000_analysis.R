@@ -5,6 +5,7 @@
 library(readr)
 library(tidyverse)
 library(fuzzyjoin)
+library(MatchIt)
 
 #inlezen Stoxx 3000 data
 stoxx3000 <- stoxx3000 <- read_delim("stoxx3000.csv", 
@@ -82,7 +83,6 @@ stoxx_EUR_JKT <- bind_rows(JKT_sample, stoxx_EUR) %>%  #retains only EUR
 # No matching; constructing a pre-match matchit object
 m.out0_EUR <- matchit(treat ~ mcap, data = stoxx_EUR_JKT,
                       method = NULL, distance = "glm")
-
 
 # Checking balance prior to matching
 summary(m.out0_EUR)

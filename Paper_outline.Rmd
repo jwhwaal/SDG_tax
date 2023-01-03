@@ -1,0 +1,221 @@
+---
+title: "SDG reporting and tax avoidance"
+author: "Johannes W.H. van der Waal"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+subtitle: outline for paper
+numbered_sections: yes
+toc: yes
+bibliography: refs_sdg_tax.bib
+---
+
+```{r setup, include=FALSE, warnings = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+library(readxl)
+library(tidyverse)
+library(httr)
+library(caret)
+library(readr)
+library(lubridate)
+library(ggthemes)
+library(formattable)
+options(knitr.table.format = "latex")
+
+```
+# Abstract {-}
+**
+
+# Theoretical background
+The linkage between CSR and aggressive tax avoidance has been tried to explain by two competing approaches: 
+1. the first approach assumes that corporate tax compliance is a sign of good corporate citizenship as is CSR and that therefore aggressive tax avoidance is incongruent with an active CSR policy [@Bird2018; @christensen2004social]. CSR is complementary to tax compliance. 
+2. The second approach considers CSR and aggressive tax avoidance to be substitutes. CSR is a substitute for tax compliance [@Alsaadi2020; @Garriga2004].
+A third approach is a combination of 1 and 2, proposing that whether 1 or 2 play a role in a firm depends on the financial performance level of this company relative to its peers: if a firm performs better than its peers, it is less likely to engage in CSR and also less likely to avoid taxes. Firms performing close to or below their peers would tend to engage more in CSR and avoid more taxes [@Timbate2021].
+We work with two competing hypotheses:
+Hypothesis 1: firms engaging more with the SDGs engage less in aggressive tax avoidance (complement theory)
+Hypothesis 2: firms engaging more with the SDGs engage more in aggressive tax avoidance (substitute theory).
+The performance level will be used as a moderating variable.
+
+
+# Data and Methods {-}
+## Sample
+A set of 300 large stock-listed firms taken from the Stoxx Global 3000 index, divided over three country groups: USA, continental European companies (Sweden, Germany, France, Switzerland, Netherlands, Belgium Spain, Italy and Finland), and East-Asian companies (Japan, Korea, Taiwan, or "JKT"). The Stoxx Global 3000 list, containing ISIN codes of the firms, was downloaded in pdf-form and converted to text (csv) using the readPDF-function from the **tm** library. 
+The three groups were aselectively chosen using propensity matching on size (log assets) and industry sector. This was done in the Stoxx3000_analysis.R script using the **MatchIt** library. 
+
+
+##SDG mentioning from sustainability and/or integrated reports.
+A panel of two years was constructed. 2016 Was the first year, as this is the first full year after the introduction of the SDGs. 2020 was the most recent  full year for which reports could be retrieved. 
+All reports were downloaded from Corporateregister.com as PDF-files and subsequently converted to text, using the **quanteda** library [@benoit2018quanteda]. Together, the documents form a corpus, which is then tokenized (punctuation and stop words are removed) and from which a document-feature matrix is constructed. This allows to analyse the documents in the corpus statistically. We specifically want to analyze the SDGs and also determine if the document has certain characteristics, such as meeting the GRI or IIRC reporting standard. The analysis of the SDGs is done using a dictionary, which defines keywords for each feature that characterize that feature. The keywords are taken from the descriptions of the SDGs in the text of the UN resolution and are listed in Appendix 1.For each document, the number of times a particular characteristic appears in the text is listed. This may be in absolute or relative terms. This study chose to use absolute scores. The scores are linked to the firm and year.
+
+##Financial data
+For every firm, the following financial data were retrieved from Factset, based on the ISIN codes. 
+```{r summary stats}
+library(vtable)
+load("df_tax.Rdata") #the final datafile loaded from disk.
+var.labs <- data.frame(var = c("SIZE", 
+                               "PTI", 
+                               "CTP",
+                               "ROA", 
+                               "PTI_FOREIGN",
+                               "LEV"),
+                       labels = c("Size (log(Assets))", 
+                                  "Pre-tax Income", 
+                                  "Cash Taxes Paid", 
+                                  "Pre-tax Return on Assets %",
+                                  "Foreign Pre-tax Income",
+                                  "Leverage%"))
+
+df %>%  sumtable(., vars = var.labs$var, labels = var.labs)
+```
+Tax avoidance is an elusive concept that is difficult to capture in a number. Consistent with other relevant literature, we chose to calculate different cash effective tax rates, namely per year, and per 5-year period [@Dunbar2010; @Henry2018]. Since the firms are located in different tax jurisdictions, the difference between effective tax rate and statutory nominal tax rate has also been calculated in order to improve comparability. Nominal tax rates were looked up by year in Tax Foundation documentation (www.taxfoundation.org). 
+CETR = Cash Effective Tax Rate = Cash Tax Paid / Pretax Income minus special items in year t
+CETR_s = CETR - statutory tax rate in year t
+CETR_5 = CETR averaged over year t-4 to t
+CETR_5_s = CETR_s average over t-4 to t
+
+The CETR data have been truncated so that only values between 0 and 1 were retained.
+
+Company performance = pretax ROA - industry average pretax ROA in year t.
+Sector relative financial performance in year t is calculated as the pretax Return on Average Assets(pretax ROA) minus the Factset industry group average pretax ROA in that year. It is assumed that companies performing below their peer group average have an incentive to engage in tax avoidance to improve their performance. 
+
+## ESG data
+To compare cash effective tax rates with sustainability performance, we collect the FTSE Russell ESG-scores from Factset. This is a compound sustainability score that summarizes in one score the environmental, social and governance risks and performance of a firm. It consists of 14 themes, which are aligned with the SDGs [@FTSERusell2020]. The ESG ratings are used as an alternative proxy to express sustainability risk and performance, in addition to the SDG reporting scores, which are indicators of sustainability disclosure. The ESG indicators are related to the sector average.
+
+##Control variables
+We use a number of control variables that are customary. Larger firms  have more resources to spend on tax planning and on sustainability programmes and disclosure. Other control variables include the industry sector and the country group.
+
+```{r summary stats_two}
+var.labs <- data.frame(var = c("cetr", 
+                               "cetr_5", 
+                               "cetr_5_s",
+                               "FTSE_ESG_sr", 
+                               "performance",
+                               "sdg",
+                               "sdg_total"),
+                       labels = c("Cash Effective Tax Rate", 
+                                  "5-Year Cash Effective Tax Rate", 
+                                  "5-Year CETR to Statutory Tax Rate Difference", 
+                                  "FTSE Russell ESG sector relative performance",
+                                  "Sector Relative Financial Performance",
+                                  "Number of SDG mentions",
+                                  "Total SDG Goal mentions"
+                                  ))
+
+df %>%  sumtable(., vars = var.labs$var, labels = var.labs)
+```
+
+#Results and discussion
+The follwing table shows the correlations between the most important variables:
+```{r correlations}
+library(psych)
+#truncate data for cetr_5 > 0 and cetr_5 <0.5 (as is customary in other)
+df_t <- df %>% filter(cetr_5 > 0 & cetr_5 < 1)
+df_t %>% select(cetr_5_s, cetr_5, cetr, sdg, sdg_total, SIZE, FTSE_ESG_sr,  
+               performance) %>%
+  drop_na() %>%
+  pairs() 
+
+matrix <- df_t %>% select(cetr_5_s, cetr_5, cetr, sdg, sdg_total, SIZE, FTSE_ESG_sr, performance) %>%
+  drop_na()
+mycorrelations <- psych::corr.test(matrix)
+print(mycorrelations$stars,quote=FALSE)
+```
+The correlation matrix shows that the CETR measures correlate to each other, and correlate weakly to performance and sustainability performance (ESG rating). There is no clear univariate correlation with SDG or total SDG mentioning. 
+
+## Regression analysis
+We develop two models, based on the 2012-2020 panel data: One to explore the relationship between tax aggressiveness and sustainability using the FTSE ESG ratings, which are available for all the nine years in the row, and one with the SDG scores, which have been extracted for 2016 and 2020. 
+
+### Model 1: CETR_5 versus FTSE ESG - Pooled OLS
+```{r model1}
+load("df1.Rdata")
+library(plm)
+
+#truncate data for cetr_5 > 0 and cetr_5 <0.5 (as is customary in other)
+df1_t <- df1 %>% filter(cetr_5 > 0 & cetr_5 < 1)
+
+#make a first model (pooled OLS)
+form1a <- cetr_5 ~ log(ASSETS) + FTSE_ESG_sr + performance + ctrygrp 
+model1 <- plm(form1a, data = df1_t, index = c("year"), model="pooling")
+summary(model1)
+```
+
+### Model 2: CETR_5 versus FTSE ESG - Fixed Effects
+```{r model2}
+#truncate data for cetr_5 > 0 and cetr_5 <0.5 (as is customary in other)
+df1_t <- df1 %>% filter(cetr_5 > 0 & cetr_5 < 1)
+
+#make a fixed effects model (with )
+form1a <- cetr_5 ~ log(ASSETS) + FTSE_ESG_sr + performance + ctrygrp 
+model2a <- plm(form1a, data = df1_t, index = c("ctrygrp", "year"), model="within", effect="individual")
+model2b <- plm(form1a, data = df1_t, index = c("ctrygrp", "year"), model="within", effect="twoways")
+summary(model2a)
+summary(model2b)
+
+```
+### Model 3: CETR_5 versus FTSE ESG - First Differences
+```{r model3}
+#truncate data for cetr_5 > 0 and cetr_5 <0.5 (as is customary in other)
+df1_t <- df1 %>% filter(cetr_5 > 0 & cetr_5 < 1)
+
+#make a fixed effects model (with )
+form1a <- cetr_5 ~ log(ASSETS) + FTSE_ESG_sr + performance + ctrygrp 
+model3 <- plm(form1a, data = df1_t, index = c("ctrygrp", "year"), model="fd")
+summary(model3)
+
+```
+### Model 4: CETR_5 versus FTSE ESG - Random Effects
+```{r model4}
+#truncate data for cetr_5 > 0 and cetr_5 <0.5 (as is customary in other)
+df1_t <- df1 %>% filter(cetr_5 > 0 & cetr_5 < 1)
+
+#make a fixed effects model (with )
+form1a <- cetr_5 ~ log(ASSETS) + FTSE_ESG_sr + performance + ctrygrp 
+model4 <- plm(form1a, data = df1_t, index = c("ctrygrp", "year"), model="random",
+              random.method = "walhus")
+summary(model4)
+
+```
+### Model 5: SDG mentioning - Random Effects
+```{r model5}
+load("df_tax.Rdata")
+#truncate data for cetr_5 > 0 and cetr_5 <0.5 (as is customary in other)
+df_t <- df %>% filter(cetr_5 > 0 & cetr_5 < 1)
+
+#make a fixed effects model (with )
+form1a <- log(sdg+1) ~ cetr_5 + FTSE_ESG_sr + performance + ctrygrp + SIZE
+model5 <- plm(form1a, data = df_t, index = c("ctrygrp", "year"), model="random",
+              random.method = "walhus")
+summary(model5)
+
+```
+
+### Model 6: Total SDG mentioning - Random Effects
+```{r model6}
+load("df_tax.Rdata")
+#truncate data for cetr_5 > 0 and cetr_5 <0.5 (as is customary in other)
+df_t <- df %>% filter(cetr_5 > 0 & cetr_5 < 1)
+
+#make a fixed effects model (with )
+form1a <- log(sdg_total+1) ~ cetr_5 + FTSE_ESG_sr + performance + ctrygrp  + SIZE
+model6 <- plm(form1a, data = df_t, index = c("ctrygrp", "year"), model="within"
+              )
+summary(model6)
+
+pooltest(form1a, data = df_t, index = c("ctrygrp", "year"), model="pooling")
+
+```
+
+
+```{r model7}
+load("df_tax.Rdata")
+#truncate data for cetr_5 > 0 and cetr_5 <0.5 (as is customary in other)
+df_t <- df %>% filter(cetr_5 > 0 & cetr_5 < 1)
+
+#make a fixed effects model (with )
+form1a <- log(s_themes+1) ~ cetr_5 + FTSE_ESG_sr + performance + ctrygrp + SIZE
+model7 <- plm(form1a, data = df_t, index = c("ctrygrp", "year"), model="random",
+              random.method = "walhus")
+summary(model7)
+
+```

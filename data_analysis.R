@@ -626,15 +626,14 @@ library(rpart)
 library(rpart.plot)
 
 #create a data partition
-data <- df_t %>% select(cetr_5_s, SIZE, year, report,  ROA, sdg, mPerf, 
-                          LEV, FOREIGN, ctrygrp,  SDG, sdg01:sdg17) %>%
-  drop_na() %>% mutate(SDG = as.factor(as.numeric(SDG)),
-                       TA = as.factor(ifelse(cetr_5_s < median(df_t$cetr_5_s), 1, 0)))
+data <- df %>% select(BTD, SIZE, year, report,  ROA, sdg, performance, 
+                          LEV, FOREIGN, ctrygrp,  sdg01:sdg17, FTSE_ESG_sr) %>%
+  drop_na() 
 set.seed(1, sample.kind = "Rounding")
-trainIndex <- createDataPartition(data$TA, p = .5, 
+trainIndex <- createDataPartition(data$BTD, p = .5, 
                                   list = FALSE, 
                                   times = 1)
-summary(df_t)
+
 #  mutate(SDG = as.factor(SDG))
 train <- data[trainIndex,]
 test <- data[-trainIndex,]
@@ -642,7 +641,7 @@ test <- data[-trainIndex,]
 # train a decision tree for test
 library(rpart)
 set.seed(2, sample.kind = "Rounding")
-model1 <- train(factor(TA) ~ SIZE +  report + SDG + mPerf + ctrygrp , data = train, 
+model1 <- train(BTD ~ SIZE +  report + sdg + ctrygrp , data = train, 
                 method = "rpart",
                 preProcess = c("center", "scale"),
                 tuneLength = 10,
@@ -660,11 +659,11 @@ summary.r(data3$TA)
 summary(data$TA)
 library(rpart.plot)
 set.seed(3, sample.kind = "Rounding")
-model2 <- rpart(cetr_5_s ~  SIZE + ctrygrp + year + sdg + FOREIGN + LEV + mPerf, data = train, 
+model2 <- rpart(BTD ~   SIZE +  report + sdg + ctrygrp + performance + LEV + ROA, data = train, 
                 method = "anova", 
                 control = rpart.control(cp = 0.01),
                 na.action=na.exclude)
-y_hat2 <- predict(model2, newdata = test, type = "class")
+y_hat2 <- predict(model2, newdata = test, type = "")
 
 cfm_m2 <- confusionMatrix(y_hat2, test$cetr_5_s, dnn = c("Prediction", "Reference"),
                           na.action = na.pass)
@@ -675,6 +674,14 @@ plot(model2)
 rpart.plot(model2, type = 2)
 printcp(model2)
 
+
+model3 <- rpart(BTD ~  sdg + ctrygrp + 
+                sdg01 + sdg02 + sdg03 + sdg04 + sdg05 + sdg06 + sdg07 + sdg08 +
+                  sdg09 +sdg10 + sdg11 +sdg12 +sdg13 + sdg14 +sdg15 + sdg16 + sdg17, data = train, 
+                method = "anova", 
+                control = rpart.control(cp = 0.01),
+                na.action=na.exclude)
+rpart.plot(model3, type = 2)
 length(train$ctrygrp[train$ctrygrp=="USA"])
 length(train$ctrygrp[train$ctrygrp=="EUR"])
 length(train$ctrygrp[train$ctrygrp=="JKT"])
